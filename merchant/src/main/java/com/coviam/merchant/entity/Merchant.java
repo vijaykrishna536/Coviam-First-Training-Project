@@ -12,6 +12,7 @@ public class Merchant implements Serializable {
 
     @Id
     private Long id;
+
     private String name;
     private Integer rating;
 
