@@ -21,7 +21,7 @@ public class MerchantServiceImpl implements MerchantServices {
     @Override
     public void insert() {
         Merchant merchant = new Merchant();
-        merchant.setName("Ekart");
+        merchant.setName("Ekartt");
         merchant.setId(Long.valueOf(2));
         merchantRepository.insert(merchant);
     }
