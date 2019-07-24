@@ -15,15 +15,22 @@ public class Order {
     public static final String TABLE_NAME= "ORDERDETAILS";
     private static final String ID_COLUMN="ORDER_ID";
 
+
     @Id
     @Column(name=Order.ID_COLUMN)
     private long orderId;
     private Date orderDate;
+
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
     private int totalNoOfProducts;
-    List<OrderProduct> orderProducts;
+
+    @JoinTable(name="OrderProduct")
+
+
+
     private double totalOrderPrice;
-    @OneToOne
+   @OneToOne
     @JoinColumn(columnDefinition = "cart_Id")
     private Cart cart;
 
