@@ -18,7 +18,7 @@ public class Cart {
     @Column(name=Cart.ID_COLUMN)
     private long cartId;
 
-    List<CartItem> cartItems;
     private double totalPrice;
+
 
 }
