@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class InventoryPilot {
+public class InventoryController {
 
     @Autowired
     private MerchantServices merchantServices;
@@ -16,13 +16,18 @@ public class InventoryPilot {
     @Autowired
     private InventoryServices inventoryServices;
 
+    // count merchant for pid
     @GetMapping(value = "/test1/{pid}")
     public Integer getCountById(@PathVariable(name = "pid") Long pid) {
         System.out.println("Inside test1");
-        return (inventoryServices.countMerchantForProduct(pid));
+        if (pid != null)
+            return (inventoryServices.countMerchantForProduct(pid));
+
+        System.out.println("Pid is null");
+        return null;
     }
 
-    @GetMapping(value = "/testAddMerchant")
+    /*@GetMapping(value = "/testAddMerchant")
     public void insertMerchant() {
         merchantServices.insert();
     }
@@ -30,5 +35,5 @@ public class InventoryPilot {
     @GetMapping(value = "/testAddInventory")
     public void insertInventory() {
         inventoryServices.insert();
-    }
+    }*/
 }
