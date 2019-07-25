@@ -19,10 +19,10 @@ public class ProductServiceImpl implements ProductService {
     CategoryRepository categoryRepository;
 
     @Override
-    public Product getProductById(Long id) {
+    public List<Product> getProductById(String pId) {
 
         //TODO: add exception to handle null products
-        return productRepository.findById(id).get();
+        return productRepository.findByPId(pId);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductByCategory(String categoryName) {
-        return productRepository.findByCategory(categoryName);
+        return productRepository.findByCategoryName(categoryName);
     }
 
     @Override

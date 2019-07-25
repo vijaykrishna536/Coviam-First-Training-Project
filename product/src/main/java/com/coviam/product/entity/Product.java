@@ -16,14 +16,15 @@ import java.util.List;
 public class Product implements Serializable {
 
     @Id
-    Long id;
+    String id;
+    String pId;
     String name;
     String pic_url;
     List<Feature> features;
     String description;
+    String categoryName;
 
     @DBRef
     private Category category;
 
-    //TODO: add product attributes (USP)
 }

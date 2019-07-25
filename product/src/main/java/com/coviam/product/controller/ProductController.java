@@ -14,14 +14,14 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/getAllProducts/{categoryName}/")
+    @GetMapping("/getAllProducts/{categoryName}")
     public List<Product> getAllProductByCategory(@PathVariable String categoryName) {
-        return null;
+        return productService.getProductByCategory(categoryName);
     }
 
-    @GetMapping("/getAProduct/{productID}")
-    public Product getAProduct(@PathVariable Long productId) {
-        return null;
+    @GetMapping("/getAProduct/{productId}")
+    public List<Product> getProductByProductId(@PathVariable String productId) {
+        return productService.getProductById(productId);
     }
 
     @PostMapping(value = "/addCategory")
@@ -35,6 +35,11 @@ public class ProductController {
     public Product addProduct(@RequestBody Product product) {
 
         return productService.addProduct(product);
+    }
+
+    @GetMapping("/getAllProducts")
+    public List<Product> getAllProducts(){
+        return productService.getAllProducts();
     }
 
     @GetMapping("/getAllCategories")
