@@ -1,4 +1,4 @@
-package com.coviam.merchant.utility;
+package com.coviam.merchant.dto;
 
 import java.io.Serializable;
 

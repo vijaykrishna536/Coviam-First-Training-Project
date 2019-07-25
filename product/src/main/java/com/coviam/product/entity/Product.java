@@ -16,15 +16,55 @@ import java.util.List;
 public class Product implements Serializable {
 
     @Id
-    String id;
-    String pId;
-    String name;
-    String pic_url;
-    List<Feature> features;
-    String description;
-    String categoryName;
+    private String id;
+    private String pId;
+    private String name;
+    private String picUrl;
+    private List<Feature> features;
+    private String description;
+    private String categoryName;
 
     @DBRef
     private Category category;
 
+
+    public String getpId() {
+        return pId;
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPic_url() {
+        return picUrl;
+    }
+
+    public void setPic_url(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }

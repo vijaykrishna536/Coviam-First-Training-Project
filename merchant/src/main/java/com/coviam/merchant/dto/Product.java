@@ -1,14 +1,18 @@
-package com.coviam.merchant.utility;
+package com.coviam.merchant.dto;
 
+
+import java.io.Serializable;
 
 /**
  * This class will talk to Product Micro service
  * And can be used to show trending products
  */
-public class Product {
+public class Product implements Serializable {
 
     private String name;
+    private String picUrl;
     private Double price;
+    private String pId;
     private String category;
     private Integer stock;
     private Integer merchantCount;
@@ -53,6 +57,24 @@ public class Product {
     public void setMerchantCount(Integer merchantCount) {
         this.merchantCount = merchantCount;
     }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public String getpId() {
+        return pId;
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId;
+    }
+
+
 }
 
 

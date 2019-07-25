@@ -28,7 +28,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("/getAProduct/{productId}")
+    @GetMapping("/getProductByPid/{productId}")
     public List<Product> getProductByProductId(@PathVariable String productId) {
         return productService.getProductById(productId);
     }
@@ -56,6 +56,8 @@ public class ProductController {
 
         return productService.getAllCategories();
     }
+
+
 
     private static HttpEntity<?> getHeaders() throws IOException{
         HttpHeaders headers = new HttpHeaders();
