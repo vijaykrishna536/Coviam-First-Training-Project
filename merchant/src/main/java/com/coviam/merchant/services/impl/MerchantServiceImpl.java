@@ -7,8 +7,6 @@ import com.coviam.merchant.services.MerchantServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class MerchantServiceImpl implements MerchantServices {
 
@@ -18,21 +16,14 @@ public class MerchantServiceImpl implements MerchantServices {
     @Autowired
     private InventoryRepository inventoryRepository;
 
+
+    // trust me...Ignore this function for now
     @Override
-    public Integer countMerchantForProduct(Long productId) {
-
-        List<Merchant> merchantList = inventoryRepository.getMerchantIdByProductId(productId);
-
-
-        return merchantList.size();
+    public void insert() {
+        Merchant merchant = new Merchant();
+        merchant.setName("Ekartt");
+        merchant.setId(Long.valueOf(2));
+        merchantRepository.insert(merchant);
     }
 
-    @Override
-    public List<Merchant> getMerchantRankListForProduct(Long productId) {
-
-        List<Merchant> merchantList = inventoryRepository.getMerchantIdByProductId(productId);
-
-
-        return null;
-    }
 }

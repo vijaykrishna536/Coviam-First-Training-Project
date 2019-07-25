@@ -1,23 +1,19 @@
 package com.coviam.merchant.entity;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-@Document(collection = Merchant.COLLECTION_NAME)
+//@Document(collection = Merchant.COLLECTION_NAME)
 public class Inventory implements Serializable {
 
     public static final String COLLECTION_NAME = "inventory";
-
 
     @Id
     private Long id;
 
     // https://docs.spring.io/spring-data/mongodb/docs/1.3.3.RELEASE/reference/html/mapping-chapter.html
-    @DBRef
-    private Merchant merchantId;
+    private Long merchantId;
     private Long productId;
 
     private Double price;
@@ -32,11 +28,11 @@ public class Inventory implements Serializable {
         this.id = id;
     }
 
-    public Merchant getMerchantId() {
+    public Long getMerchantId() {
         return merchantId;
     }
 
-    public void setMerchantId(Merchant merchantId) {
+    public void setMerchantId(Long merchantId) {
         this.merchantId = merchantId;
     }
 

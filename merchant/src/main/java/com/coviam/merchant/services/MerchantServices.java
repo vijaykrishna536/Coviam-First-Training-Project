@@ -1,12 +1,8 @@
 package com.coviam.merchant.services;
 
-import com.coviam.merchant.entity.Merchant;
-
-import java.util.List;
-
 public interface MerchantServices {
 
-    Integer countMerchantForProduct(Long productId);
+    // trust me...Ignore this function for now
+    void insert();
 
-    List<Merchant> getMerchantRankListForProduct(Long productId);
 }
