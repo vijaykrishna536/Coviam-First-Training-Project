@@ -2,6 +2,8 @@ package com.coviam.merchant.controller;
 
 import com.coviam.merchant.services.InventoryServices;
 import com.coviam.merchant.services.MerchantServices;
+import com.coviam.merchant.services.ProductService;
+import com.coviam.merchant.utility.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,9 @@ public class InventoryController {
     @Autowired
     private InventoryServices inventoryServices;
 
+    @Autowired
+    private ProductService productService;
+
     // count merchant for pid
     @GetMapping(value = "/test1/{pid}")
     public Integer getCountById(@PathVariable(name = "pid") Long pid) {
@@ -26,6 +31,14 @@ public class InventoryController {
         System.out.println("Pid is null");
         return null;
     }
+
+
+    // This method will talk to Nupur's product Microservices
+    @GetMapping(value = "getProduct/{pid}")
+    public Product getProductByPid(@PathVariable(name = "pid") Long pid) {
+        return productService.getProductByPid(pid);
+    }
+
 
     /*@GetMapping(value = "/testAddMerchant")
     public void insertMerchant() {

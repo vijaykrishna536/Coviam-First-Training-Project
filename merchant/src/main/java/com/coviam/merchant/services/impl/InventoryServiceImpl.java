@@ -27,6 +27,17 @@ public class InventoryServiceImpl implements InventoryServices {
         return this.fetchMerchantsForProduct(productId).size();
     }
 
+    // get stock for pid
+    @Override
+    public Integer getStockOf(Long pid) {
+        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+        int stock = 0;
+        for (Inventory inventory : inventoryList) {
+            stock += inventory.getStock();
+        }
+        return Integer.valueOf(stock);
+    }
+
 
     // returns list of merchants selling pid
     @Override
@@ -39,6 +50,18 @@ public class InventoryServiceImpl implements InventoryServices {
             merchantList.add(merchant);
         }
         return merchantList;
+    }
+
+    // get best price for pid
+    @Override
+    public Double getBestPrice(Long pid) {
+        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+
+        Double minPrice = Double.valueOf(0);
+        for (Inventory inventory : inventoryList) {
+            minPrice = Math.min(minPrice, inventory.getPrice());
+        }
+        return minPrice;
     }
 
     // fetch inventory for pid
