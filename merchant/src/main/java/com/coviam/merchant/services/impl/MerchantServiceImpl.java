@@ -25,4 +25,5 @@ public class MerchantServiceImpl implements MerchantServices {
         merchant.setId(Long.valueOf(2));
         merchantRepository.insert(merchant);
     }
+
 }

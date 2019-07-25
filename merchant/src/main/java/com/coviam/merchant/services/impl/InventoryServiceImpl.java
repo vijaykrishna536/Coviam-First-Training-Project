@@ -41,6 +41,12 @@ public class InventoryServiceImpl implements InventoryServices {
         return merchantList;
     }
 
+    // fetch inventory for pid
+    @Override
+    public List<Inventory> fetchInventoryForPid(Long pid) {
+        return null;
+    }
+
 
     // trust me...Ignore this function for now
     @Override
