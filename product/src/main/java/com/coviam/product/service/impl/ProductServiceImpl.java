@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     CategoryRepository categoryRepository;
 
     @Override
-    public List<Product> getProductById(String pId) {
+    public Product getProductById(String pId) {
 
         //TODO: add exception to handle null products
         return productRepository.findByPId(pId);

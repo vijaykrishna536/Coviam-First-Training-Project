@@ -1,8 +1,9 @@
 package com.coviam.merchant.services.impl;
 
+import com.coviam.merchant.MerchantApplication;
+import com.coviam.merchant.dto.Product;
 import com.coviam.merchant.services.InventoryServices;
 import com.coviam.merchant.services.ProductService;
-import com.coviam.merchant.utility.Product;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +20,29 @@ public class ProductServiceImpl implements ProductService {
     // This method will talk to Nupur's product Microservices
 
     @Override
-    public Product getProductByPid(Long pid) {
+    public Product getProductByPid(String pid) {
 
         RestTemplate restTemplate = new RestTemplate();
         final String productMSURL
-                = "http://10.177.68.85:8080/getAProduct";
+                = "http://" +
+                MerchantApplication.IP_NUPUR +
+                ":"
+                +
+                MerchantApplication.PORT_NUPUR +
+                "getProductByPid";
 
 
         ResponseEntity<String> response
                 = restTemplate.getForEntity(productMSURL + "/" + pid, String.class);
 
+        String jsonString = response.getBody();
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode root, name;
-        try {
-            root = mapper.readTree(response.getBody());
-            name = root.path("name");
-            System.out.println(root);
 
+        JsonNode root;
+        try {
+            Product product = mapper.readValue(jsonString, Product.class);
+            System.out.println(product);
         } catch (Exception e) {
             e.printStackTrace();
         }

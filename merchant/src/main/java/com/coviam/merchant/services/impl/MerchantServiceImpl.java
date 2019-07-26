@@ -22,7 +22,7 @@ public class MerchantServiceImpl implements MerchantServices {
     public void insert() {
         Merchant merchant = new Merchant();
         merchant.setName("Ekartt");
-        merchant.setId(Long.valueOf(2));
+        merchant.setId(String.valueOf(2));
         merchantRepository.insert(merchant);
     }
 

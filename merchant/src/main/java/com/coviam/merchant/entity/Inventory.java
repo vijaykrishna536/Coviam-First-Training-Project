@@ -10,37 +10,38 @@ public class Inventory implements Serializable {
     public static final String COLLECTION_NAME = "inventory";
 
     @Id
-    private Long id;
+    private String id;
 
     // https://docs.spring.io/spring-data/mongodb/docs/1.3.3.RELEASE/reference/html/mapping-chapter.html
-    private Long merchantId;
-    private Long productId;
+    private String merchantId;
+    private String productId;
 
     private Double price;
     private Integer stock;
     private Integer sold;
+    private String productName;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getMerchantId() {
+    public String getMerchantId() {
         return merchantId;
     }
 
-    public void setMerchantId(Long merchantId) {
+    public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
 
-    public Long getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
@@ -66,5 +67,13 @@ public class Inventory implements Serializable {
 
     public void setSold(Integer sold) {
         this.sold = sold;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

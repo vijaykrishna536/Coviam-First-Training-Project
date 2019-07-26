@@ -2,6 +2,6 @@ package com.coviam.merchant.services;
 
 public interface RankingService {
 
-    Object fetchRankListForProduct(Long pid);
+    Object fetchRankListForProduct(String pid);
 
 }

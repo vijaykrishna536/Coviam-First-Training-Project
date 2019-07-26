@@ -4,7 +4,9 @@ import com.coviam.product.entity.Category;
 import com.coviam.product.entity.Product;
 import com.coviam.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,14 +24,19 @@ public class ProductController {
     @Autowired
     RestTemplate restTemplate;
 
+    private static HttpEntity<?> getHeaders() throws IOException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        return new HttpEntity<String>(headers);
+    }
+
     @GetMapping("/getAllProducts/{categoryName}")
     public List<Product> getAllProductByCategory(@PathVariable String categoryName) {
         return productService.getProductByCategory(categoryName);
     }
 
-
     @GetMapping("/getProductByPid/{productId}")
-    public List<Product> getProductByProductId(@PathVariable String productId) {
+    public Product getProductByProductId(@PathVariable String productId) {
         return productService.getProductById(productId);
     }
 
@@ -47,7 +54,7 @@ public class ProductController {
     }
 
     @GetMapping("/getAllProducts")
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
@@ -55,14 +62,6 @@ public class ProductController {
     public List<Category> getAllCategories() {
 
         return productService.getAllCategories();
-    }
-
-
-
-    private static HttpEntity<?> getHeaders() throws IOException{
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        return new HttpEntity<String>(headers);
     }
 
 }

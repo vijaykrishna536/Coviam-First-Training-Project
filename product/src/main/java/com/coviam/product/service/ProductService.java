@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getProductById(String Id);
+    Product getProductById(String Id);
 
     List<Product> getAllProducts();
 

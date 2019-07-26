@@ -10,12 +10,12 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     private String name;
-    private String picUrl;
     private Double price;
     private String pId;
     private String category;
     private Integer stock;
     private Integer merchantCount;
+    private String merchantId;
 
 
     public String getName() {
@@ -58,14 +58,6 @@ public class Product implements Serializable {
         this.merchantCount = merchantCount;
     }
 
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
-
     public String getpId() {
         return pId;
     }
@@ -74,7 +66,11 @@ public class Product implements Serializable {
         this.pId = pId;
     }
 
+    public String getMerchantId() {
+        return merchantId;
+    }
 
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
+    }
 }
-
-
