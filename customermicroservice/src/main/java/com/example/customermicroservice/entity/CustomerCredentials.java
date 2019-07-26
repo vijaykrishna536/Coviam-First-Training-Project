@@ -11,16 +11,14 @@ public class CustomerCredentials {
     private static final String ID_COLUMN = "ID";
 
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", updatable = false, nullable = false)
-//    private Long id;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = CustomerCredentials.ID_COLUMN, updatable = false, nullable = false)
     private Long customerId;
 
+    private String password;
+
+    @Column(nullable = false)
     private String emailId;
 
     public Long getCustomerId() {
@@ -30,8 +28,6 @@ public class CustomerCredentials {
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
-
-    private String password;
 
     public String getEmailId() {
         return emailId;
