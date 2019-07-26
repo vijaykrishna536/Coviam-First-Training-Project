@@ -6,9 +6,6 @@ import com.coviam.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class ProductInventoryServiceImpl implements com.coviam.product.service.ProductInventoryService {
 
@@ -20,13 +17,12 @@ public class ProductInventoryServiceImpl implements com.coviam.product.service.P
         Product fullProduct = productService.getProductById(pid);
 
 
-            ProductMinDto productMinDto = new ProductMinDto();
-            productMinDto.setName(fullProduct.getName());
-            productMinDto.setPicUrl(fullProduct.getPic_url());
-            productMinDto.setpId(fullProduct.getpId());
-            productMinDto.setPicUrl(fullProduct.getPic_url());
-
-
+        ProductMinDto productMinDto = new ProductMinDto();
+        productMinDto.setName(fullProduct.getName());
+        productMinDto.setPicUrl(fullProduct.getPic_url());
+        productMinDto.setpId(fullProduct.getpId());
+        productMinDto.setPicUrl(fullProduct.getPic_url());
+        productMinDto.setCategoryName(fullProduct.getCategoryName());
         return productMinDto;
     }
 }

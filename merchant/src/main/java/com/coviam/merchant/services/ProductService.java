@@ -1,9 +1,9 @@
 package com.coviam.merchant.services;
 
-import com.coviam.merchant.dto.Product;
+import com.coviam.merchant.dto.ProductDto;
 
 public interface ProductService {
 
     // This method will talk to Nupur's product Microservices
-    Product getProductByProductId(String productId);
+    ProductDto getProductFromInventory(String productId);
 }

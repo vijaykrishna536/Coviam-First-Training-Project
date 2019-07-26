@@ -13,8 +13,8 @@ public interface InventoryServices {
     // get stock for pid
     Integer getStockOf(String pid);
 
-    // returns bets price for pid
-    Double getBestPrice(String pid);
+    // returns best price for pid
+    Double getBestPrice(String productId);
 
     // returns list of merchants selling pid
     List<Merchant> fetchMerchantsForProduct(String productId);

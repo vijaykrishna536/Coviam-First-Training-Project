@@ -9,6 +9,7 @@ public class ProductMinDto implements Serializable {
     private String name;
     private String picUrl;
     private Double price;
+    private  String categoryName;
 
     public String getId() {
         return id;
@@ -48,5 +49,13 @@ public class ProductMinDto implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

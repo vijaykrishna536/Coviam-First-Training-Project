@@ -1,6 +1,6 @@
 package com.coviam.merchant.controller;
 
-import com.coviam.merchant.dto.Product;
+import com.coviam.merchant.dto.ProductDto;
 import com.coviam.merchant.entity.Inventory;
 import com.coviam.merchant.services.InventoryServices;
 import com.coviam.merchant.services.MerchantServices;
@@ -35,13 +35,17 @@ public class InventoryController {
         return null;
     }
 
+    @GetMapping(value = "/getBestPrice/{pid}")
+    public Double getBestPrice(@PathVariable(name = "pid") String pid) {
+        return inventoryServices.getBestPrice(pid);
 
-    @GetMapping(value = "getProductByProductId/{productId}")
-    public Product getProductByPid(@PathVariable(name = "productId") String productId) {
-        return productService.getProductByProductId(productId);
     }
 
-    @GetMapping(value = "getAllInventory")
+
+
+
+    // just for testing don't release this to final product
+    @GetMapping(value = "/getAllInventory")
     public List<Inventory> getAllInventory() {
         List<Inventory> inventoryList = inventoryServices.findAll();
         return inventoryList;

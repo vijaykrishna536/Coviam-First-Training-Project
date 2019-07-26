@@ -51,17 +51,25 @@ public class TrendingProductImpl implements TrendingProductService {
         List<Inventory> inventoryList = inventoryServices.findAll();
         List<TrendingProductDTO> trendingProductDTOS = new ArrayList<>();
 
+        final int limit = 3;
+        int i = 1;
         for (Inventory inventory : inventoryList) {
 
+            if (i>limit) break;
+            i++;
+
             TrendingProductDTO trendingProductDTO = new TrendingProductDTO();
-            trendingProductDTO.setpId(inventory.getProductId());
+            trendingProductDTO.setProductId(inventory.getProductId());
             trendingProductDTO.setName(inventory.getProductName());
             System.out.println(inventory.getProductName());
 
             ProductMinDto productMinDto = this.getMinProductDtoByPid(inventory.getProductId());
             trendingProductDTO.setPicUrl(productMinDto.getPicUrl());
+            trendingProductDTO.setCategoryName(inventory.getCategoryName());
 
             trendingProductDTOS.add(trendingProductDTO);
+
+
         }
 
         return trendingProductDTOS;
@@ -88,7 +96,7 @@ public class TrendingProductImpl implements TrendingProductService {
 
     JsonNode root;
         try {
-                Product product = mapper.readValue(jsonString, Product.class);
+                ProductDto product = mapper.readValue(jsonString, ProductDto.class);
         System.out.println(product);
         } catch (Exception e) {
         e.printStackTrace();

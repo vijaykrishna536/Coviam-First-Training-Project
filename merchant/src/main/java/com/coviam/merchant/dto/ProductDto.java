@@ -4,10 +4,10 @@ package com.coviam.merchant.dto;
 import java.io.Serializable;
 
 /**
- * This class will talk to Product Micro service
+ * This class will talk to ProductDto Micro service
  * And can be used to show trending products
  */
-public class Product implements Serializable {
+public class ProductDto implements Serializable {
 
     private String name;
     private Double price;
@@ -16,6 +16,7 @@ public class Product implements Serializable {
     private Integer stock;
     private Integer merchantCount;
     private String merchantId;
+    private String picUrl;
 
 
     public String getName() {
@@ -72,5 +73,13 @@ public class Product implements Serializable {
 
     public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 }

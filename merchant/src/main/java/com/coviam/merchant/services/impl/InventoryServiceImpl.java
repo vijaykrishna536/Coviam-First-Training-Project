@@ -58,8 +58,9 @@ public class InventoryServiceImpl implements InventoryServices {
     public Double getBestPrice(String productId) {
         List<Inventory> inventoryList = inventoryRepository.findByProductId(productId);
 
-        Double minPrice = Double.valueOf(0);
+        Double minPrice = Double.valueOf(5.5);
         for (Inventory inventory : inventoryList) {
+            System.out.println(minPrice);
             minPrice = Math.min(minPrice, inventory.getPrice());
         }
         return minPrice;
@@ -92,6 +93,19 @@ public class InventoryServiceImpl implements InventoryServices {
         return inventoryRepository.findByCategoryName(categoryName);
 
     }
+
+
+/*
+    public Double getBestPriceByPid(String productId) {
+
+        List<Inventory> inventoryList = inventoryRepository.findByProductId(productId);
+        Double bestPrice = Double.valueOf(0);
+        for (Inventory inventory : inventoryList) {
+            bestPrice = Math.max(bestPrice, inventory.getPrice());
+        }
+        return bestPrice;
+
+    }*/
 
 
 }
