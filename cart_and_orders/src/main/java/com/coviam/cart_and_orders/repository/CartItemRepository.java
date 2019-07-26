@@ -10,6 +10,9 @@ public interface CartItemRepository extends CrudRepository<CartItem,Long> {
     void insertCartItem(String merchantId, String productId, Integer quantity, Long cartId);
 
     @Query(value = "SELECT count(1) from cartitem where product_id =?1 and cart_id_id = ?2 and merchant_id=?3 ",nativeQuery = true)
-    int findInsertion(String productId, Long cartId,String merchantId);
+    Integer findExist(String productId, Long cartId,String merchantId);
+
+    @Query(value = "DELETE FROM cartitem WHERE product_id =?1 and cart_id_id = ?2 and merchant_id=?3",nativeQuery = true)
+    void deleteCartItem(String productId, Long cartId,String merchantId);
 
 }

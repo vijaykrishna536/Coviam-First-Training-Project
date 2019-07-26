@@ -14,14 +14,20 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = CartItem.ID_COLUMN, updatable = false, nullable = false)
     private Long id;
+
     private Integer quantity;
+
     @Column(nullable = false)
     private String productId;
+
     @Column(nullable = false)
     private String merchantId;
-    @OneToOne
-    @JoinColumn(columnDefinition = "id")
-    private Cart cartId;
+
+    private Long customerId;
+
+    @ManyToOne
+    @JoinColumn(name = "cartId")
+    private Cart cart;
 
     public Long getId() {
         return id;
@@ -55,18 +61,22 @@ public class CartItem {
         this.merchantId = merchantId;
     }
 
-    public Cart getCartId() {
-        return cartId;
+    public Cart getCartId() { return cart; }
+
+    public void setCartId(Cart cartId) { this.cart = cartId; }
+
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCartId(Cart cartId) {
-        this.cartId = cartId;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
-    @Transient
-    Double getTotalPrice(Double price){
-        return this.quantity*price;
-    }
+    //    @Transient
+//    Double getTotalPrice(Double price){
+//        return this.quantity*price;
+//    }
 
 
 }

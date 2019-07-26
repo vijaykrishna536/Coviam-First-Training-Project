@@ -1,17 +1,16 @@
 package com.coviam.cart_and_orders.dto;
 
-import com.coviam.cart_and_orders.entity.Cart;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 public class CartItemDto {
 
     private Integer quantity;
     private String productId;
     private String merchantId;
-    private Cart cartId;
+    private Long customerId;
+
+
+    public Long getCustomerId() { return customerId; }
+
+    public void setCustomerId(Long customerId) { this.customerId = customerId; }
 
     public Integer getQuantity() {
         return quantity;
@@ -37,11 +36,4 @@ public class CartItemDto {
         this.merchantId = merchantId;
     }
 
-    public Cart getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(Cart cartId) {
-        this.cartId = cartId;
-    }
 }

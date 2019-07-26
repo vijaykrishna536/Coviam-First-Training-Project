@@ -34,15 +34,15 @@ public class Cart {
         this.customerId = customerId;
     }
 
-    @Transient
-    Double getTotalPrice(){
-        return null;
-    }
-
-    @Transient
-    Integer getTotalQuantity(){
-        return null;
-    }
+//    @Transient
+//    Double getTotalPrice(){
+//        return null;
+//    }
+//
+//    @Transient
+//    Integer getTotalQuantity(){
+//        return null;
+//    }
 
 
 }
