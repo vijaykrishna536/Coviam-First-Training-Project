@@ -7,15 +7,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerService {
 
-    CustomerCredentials checkLogin(String emailId, String password);
+    CustomerCredentials checkLogin(String email, String password);
 
     String addCustomer(CustomerCredentials customerCredentials);
 
-    boolean checkRegisteredCustomer(String emailId);
+    boolean checkRegisteredCustomer(String email);
 
     CustomerDetail getCustomerDetails(Long customerId);
 
     String addCustomerDetails(CustomerDetail customerDetail);
 
-    CustomerCredentials authenticateEmail(String emailId);
+    CustomerCredentials authenticateEmail(String email);
 }

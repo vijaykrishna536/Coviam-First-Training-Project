@@ -21,7 +21,7 @@ public class CustomerCredentials {
     @Column(name = CustomerCredentials.ID_COLUMN, updatable = false, nullable = false)
     private Long customerId;
 
-    private String emailId;
+    private String email;
 
     public Long getCustomerId() {
         return customerId;
@@ -33,12 +33,12 @@ public class CustomerCredentials {
 
     private String password;
 
-    public String getEmailId() {
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
