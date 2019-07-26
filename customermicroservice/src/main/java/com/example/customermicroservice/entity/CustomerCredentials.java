@@ -11,11 +11,6 @@ public class CustomerCredentials {
     private static final String ID_COLUMN = "ID";
 
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", updatable = false, nullable = false)
-//    private Long id;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = CustomerCredentials.ID_COLUMN, updatable = false, nullable = false)
