@@ -17,15 +17,16 @@ public interface InventoryServices {
     Double getBestPrice(String pid);
 
     // returns list of merchants selling pid
-    List<Merchant> fetchMerchantsForProduct(String pid);
+    List<Merchant> fetchMerchantsForProduct(String productId);
 
     // fetch inventory for pid
-    List<Inventory> fetchInventoryForPid(String pid);
+    List<Inventory> fetchInventoryForPid(String productId);
 
     // trust me...Ignore this function for now
     void insert();
 
+    List<Inventory> findByCategoryName(String categoryName);
+
+
     List<Inventory> findAll();
-    
-    List<Inventory> findAllLimit(int limit);
 }

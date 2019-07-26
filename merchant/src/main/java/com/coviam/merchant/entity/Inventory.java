@@ -1,10 +1,11 @@
 package com.coviam.merchant.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-//@Document(collection = Merchant.COLLECTION_NAME)
+@Document(collection = Inventory.COLLECTION_NAME)
 public class Inventory implements Serializable {
 
     public static final String COLLECTION_NAME = "inventory";
@@ -15,7 +16,7 @@ public class Inventory implements Serializable {
     // https://docs.spring.io/spring-data/mongodb/docs/1.3.3.RELEASE/reference/html/mapping-chapter.html
     private String merchantId;
     private String productId;
-
+    private String categoryName;
     private Double price;
     private Integer stock;
     private Integer sold;
@@ -75,5 +76,13 @@ public class Inventory implements Serializable {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

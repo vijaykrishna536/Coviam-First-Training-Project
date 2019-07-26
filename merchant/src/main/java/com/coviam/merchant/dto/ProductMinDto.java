@@ -8,6 +8,15 @@ public class ProductMinDto implements Serializable {
     private String pId;
     private String name;
     private String picUrl;
+    private Double price;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getpId() {
         return pId;
@@ -31,5 +40,13 @@ public class ProductMinDto implements Serializable {
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

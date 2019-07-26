@@ -1,5 +1,6 @@
 package com.coviam.product.controller;
 
+import com.coviam.product.dto.ProductMinDto;
 import com.coviam.product.entity.Category;
 import com.coviam.product.entity.Product;
 import com.coviam.product.service.ProductService;
@@ -30,6 +31,7 @@ public class ProductController {
         return new HttpEntity<String>(headers);
     }
 
+
     @GetMapping("/getAllProducts/{categoryName}")
     public List<Product> getAllProductByCategory(@PathVariable String categoryName) {
         return productService.getProductByCategory(categoryName);
@@ -58,6 +60,8 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+
+    // todo not working
     @GetMapping("/getAllCategories")
     public List<Category> getAllCategories() {
 

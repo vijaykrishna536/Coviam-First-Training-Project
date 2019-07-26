@@ -13,7 +13,6 @@ public class Merchant implements Serializable {
     @Id
     private String id;
     private String merchantId;
-
     private String name;
     private Integer rating;
 
@@ -23,6 +22,14 @@ public class Merchant implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
     }
 
     public String getName() {
@@ -39,13 +46,5 @@ public class Merchant implements Serializable {
 
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    public String getMerchantId() {
-        return merchantId;
-    }
-
-    public void setMerchantId(String merchantId) {
-        this.merchantId = merchantId;
     }
 }

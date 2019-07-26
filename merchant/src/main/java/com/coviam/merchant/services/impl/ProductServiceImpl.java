@@ -18,9 +18,8 @@ public class ProductServiceImpl implements ProductService {
     private InventoryServices inventoryServices;
 
     // This method will talk to Nupur's product Microservices
-
     @Override
-    public Product getProductByPid(String pid) {
+    public Product getProductByProductId(String pid) {
 
         RestTemplate restTemplate = new RestTemplate();
         final String productMSURL
@@ -40,15 +39,16 @@ public class ProductServiceImpl implements ProductService {
         ObjectMapper mapper = new ObjectMapper();
 
         JsonNode root;
+        Product product = null;
         try {
-            Product product = mapper.readValue(jsonString, Product.class);
+            product = mapper.readValue(jsonString, Product.class);
             System.out.println(product);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        return null;
+        return product;
     }
 
     /*RestTemplate restTemplate = new RestTemplate();

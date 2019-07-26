@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class TrendingProductDTO implements Serializable {
     private String name;
     private String pId;
-//    private String picUrl;
+    private String picUrl;
 
     public String getName() {
         return name;
@@ -23,11 +23,11 @@ public class TrendingProductDTO implements Serializable {
         this.pId = pId;
     }
 
-/*    public String getPicUrl() {
+    public String getPicUrl() {
         return picUrl;
     }
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
-    }*/
+    }
 }

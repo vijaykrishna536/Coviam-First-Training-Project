@@ -7,10 +7,12 @@ import com.coviam.merchant.repository.InventoryRepository;
 import com.coviam.merchant.repository.MerchantRepository;
 import com.coviam.merchant.services.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class RankingServiceImpl implements RankingService {
 
     @Autowired

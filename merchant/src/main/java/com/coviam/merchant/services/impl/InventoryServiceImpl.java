@@ -16,6 +16,7 @@ public class InventoryServiceImpl implements InventoryServices {
 
     @Autowired
     private InventoryRepository inventoryRepository;
+
     @Autowired
     private MerchantRepository merchantRepository;
 
@@ -54,8 +55,8 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // get best price for pid
     @Override
-    public Double getBestPrice(String pid) {
-        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+    public Double getBestPrice(String productId) {
+        List<Inventory> inventoryList = inventoryRepository.findByProductId(productId);
 
         Double minPrice = Double.valueOf(0);
         for (Inventory inventory : inventoryList) {
@@ -66,7 +67,7 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // fetch inventory for pid
     @Override
-    public List<Inventory> fetchInventoryForPid(String pid) {
+    public List<Inventory> fetchInventoryForPid(String productId) {
         return null;
     }
 
@@ -84,12 +85,13 @@ public class InventoryServiceImpl implements InventoryServices {
 
     @Override
     public List<Inventory> findAll() {
-        return this.inventoryRepository.findAll();
+        return inventoryRepository.findAll();
+    }
+
+    public List<Inventory> findByCategoryName(String categoryName) {
+        return inventoryRepository.findByCategoryName(categoryName);
+
     }
 
 
-    @Override
-    public List<Inventory> findAllLimit(int limit) {
-        return inventoryRepository.findAllLimit(limit);
-    }
 }
