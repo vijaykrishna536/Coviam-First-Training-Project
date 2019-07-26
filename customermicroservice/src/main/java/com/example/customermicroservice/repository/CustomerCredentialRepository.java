@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerCredentialRepository extends CrudRepository<CustomerCredentials, Long> {
 
-    @Query(value = "Select * from Customer_Credentials where email_id=?1", nativeQuery = true)
-    CustomerCredentials checkLogin(String emailId);
+    @Query(value = "Select * from Customer_Credentials where email = ?1", nativeQuery = true)
+    CustomerCredentials checkLogin(String email);
 
-    @Query(value = "Select * from Customer_Credentials where email_id=?", nativeQuery = true)
-    CustomerCredentials findEmail(String emailId);
+    @Query(value = "Select * from Customer_Credentials where email = ?1", nativeQuery = true)
+    CustomerCredentials findEmail(String email);
 }

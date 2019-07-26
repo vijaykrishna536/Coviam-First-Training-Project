@@ -18,8 +18,8 @@ public class CustomerServiceImp implements CustomerService {
     CustomerDetailsRepository customerDetailsRepository;
 
     @Override
-    public CustomerCredentials checkLogin(String emailId, String password) {
-        CustomerCredentials customerCredentials = customerCredentialRepository.checkLogin(emailId);
+    public CustomerCredentials checkLogin(String email, String password) {
+        CustomerCredentials customerCredentials = customerCredentialRepository.checkLogin(email);
         if(customerCredentials != null)
         {
             PasswordEncrupt passwordEncrupt=new PasswordEncrupt();
@@ -36,7 +36,7 @@ public class CustomerServiceImp implements CustomerService {
         final String message2="Account Successfully Created";
         final String message3="Sorry please retry";
         if (customerCredentials != null) {
-            if(checkRegisteredCustomer(customerCredentials.getEmailId())) {
+            if(checkRegisteredCustomer(customerCredentials.getEmail())) {
                 return message1;
             }
             else {
@@ -61,9 +61,9 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public boolean checkRegisteredCustomer(String emailId)
+    public boolean checkRegisteredCustomer(String email)
     {
-       CustomerCredentials customerCredentials=customerCredentialRepository.findEmail(emailId);
+       CustomerCredentials customerCredentials=customerCredentialRepository.findEmail(email);
        if(customerCredentials!=null)
            return true;
        return false;
@@ -75,8 +75,8 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public CustomerCredentials authenticateEmail(String emailId) {
-        CustomerCredentials customerCredentials = customerCredentialRepository.findEmail(emailId);
+    public CustomerCredentials authenticateEmail(String email) {
+        CustomerCredentials customerCredentials = customerCredentialRepository.findEmail(email);
         return customerCredentials;
     }
 }

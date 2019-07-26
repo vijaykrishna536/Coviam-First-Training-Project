@@ -2,16 +2,25 @@ package com.example.customermicroservice.dto;
 
 public class CustomerCredentialDto {
 
-    private String emailId;
+    private String email;
     private String password;
+    //private String confirmPassword;
 
-    public String getEmailId() {
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+//    public String getConfirmPassword() {
+//        return confirmPassword;
+//    }
+//
+//    public void setConfirmPassword(String confirmPassword) {
+//        this.confirmPassword = confirmPassword;
+//    }
 
     public String getPassword() {
         return password;

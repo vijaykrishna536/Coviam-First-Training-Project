@@ -12,22 +12,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import utility.Email;
 import utility.PasswordEncrupt;
 import utility.SendingMail;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/Customer")
-public class CustomerController {
+public class
+CustomerController {
 
     @Autowired
     CustomerService customerService;
 
     //TODO:Null Pointer Exception
     @RequestMapping(value = "/checkLogin", method = RequestMethod.GET)
-    public ResponseEntity<?> checkLogin(@RequestParam(value = "email", required = true) String emailId,
+    public ResponseEntity<?> checkLogin(@RequestParam(value = "email", required = true) String email,
                               @RequestParam(value = "password", required = true) String password) {
 
-        CustomerCredentials customerCredentials = customerService.checkLogin(emailId, password);
+        CustomerCredentials customerCredentials = customerService.checkLogin(email, password);
         IdMessageDto idMessageDto = new IdMessageDto();
 
         if(customerCredentials!=null) {
@@ -74,9 +77,9 @@ public class CustomerController {
     }
 
     @RequestMapping(method=RequestMethod.GET,value="/findCustomerByEmail")
-    public ResponseEntity<?> findEmployeeById(@RequestParam(value = "empId", required = false) String emailId)
+    public ResponseEntity<?> findEmployeeById(@RequestParam(value = "empId", required = false) String email)
     {
-        return new ResponseEntity<Boolean>(customerService.checkRegisteredCustomer(emailId),HttpStatus.OK);
+        return new ResponseEntity<Boolean>(customerService.checkRegisteredCustomer(email),HttpStatus.OK);
     }
 
     //TODO:Mail failed to send but correct response generated
@@ -87,11 +90,12 @@ public class CustomerController {
 
         CustomerCredentials customerCredentials = customerService.authenticateEmail(email);
         IdMessageDto idMessageDto = new IdMessageDto();
-        SendingMail sendingMail = new SendingMail("sidana1997@gmail.com", "Test message", "This is testing");
-
+        //SendingMail sendingMail = new SendingMail("sidana1997@gmail.com", "Test message", "This is testing");
+        Email email1=new Email();
         if(customerCredentials!=null) {
             idMessageDto.setCustomerId(customerCredentials.getCustomerId());
-            sendingMail.run();
+            //sendingMail.run();
+            System.out.println(email1.home());
             idMessageDto.setMessage("Email Sent");
             return new ResponseEntity<IdMessageDto>(idMessageDto,HttpStatus.OK);
         }
