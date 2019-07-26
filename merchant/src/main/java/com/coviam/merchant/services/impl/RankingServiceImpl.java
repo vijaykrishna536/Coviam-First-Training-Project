@@ -1,11 +1,11 @@
 package com.coviam.merchant.services.impl;
 
+import com.coviam.merchant.dto.Rank;
 import com.coviam.merchant.entity.Inventory;
 import com.coviam.merchant.entity.Merchant;
 import com.coviam.merchant.repository.InventoryRepository;
 import com.coviam.merchant.repository.MerchantRepository;
 import com.coviam.merchant.services.RankingService;
-import com.coviam.merchant.utility.Rank;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -23,13 +23,13 @@ public class RankingServiceImpl implements RankingService {
     // todo apply ranking algorithm
     //Returns ranklist
     @Override
-    public List<Rank> fetchRankListForProduct(Long pid) {
+    public List<Rank> fetchRankListForProduct(String pid) {
         List<Rank> rankList = new ArrayList<>();
         List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
 
         for (Inventory inventory : inventoryList) {
 
-            Long merchantId = inventory.getMerchantId();
+            String merchantId = inventory.getMerchantId();
             Merchant merchant = merchantRepository.findOne(merchantId);
             Rank rank = new Rank();
             rank.setPrice(inventory.getPrice());

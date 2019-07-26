@@ -11,16 +11,17 @@ public class Merchant implements Serializable {
     public static final String COLLECTION_NAME = "merchant";
 
     @Id
-    private Long id;
+    private String id;
+    private String merchantId;
 
     private String name;
     private Integer rating;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,5 +39,13 @@ public class Merchant implements Serializable {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
     }
 }

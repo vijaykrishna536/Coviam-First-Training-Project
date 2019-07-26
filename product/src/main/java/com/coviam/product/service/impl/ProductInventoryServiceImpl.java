@@ -2,6 +2,7 @@ package com.coviam.product.service.impl;
 
 import com.coviam.product.dto.ProductMinDto;
 import com.coviam.product.entity.Product;
+import com.coviam.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,22 +13,20 @@ import java.util.List;
 public class ProductInventoryServiceImpl implements com.coviam.product.service.ProductInventoryService {
 
     @Autowired
-    private ProductServiceImpl productService;
+    private ProductService productService;
 
     @Override
-    public List<ProductMinDto> getMinProductByPid(String pid) {
-        List<Product> fullProductList = productService.getProductById(pid);
-        List<ProductMinDto> productMinDtoList = new ArrayList<>();
-        for (Product product : fullProductList) {
+    public ProductMinDto getMinProductByPid(String pid) {
+        Product fullProduct = productService.getProductById(pid);
+
+
             ProductMinDto productMinDto = new ProductMinDto();
-            productMinDto.setName(product.getName());
-            productMinDto.setPicUrl(product.getPic_url());
-            productMinDto.setpId(product.getpId());
-            productMinDto.setPicUrl(product.getPic_url());
+            productMinDto.setName(fullProduct.getName());
+            productMinDto.setPicUrl(fullProduct.getPic_url());
+            productMinDto.setpId(fullProduct.getpId());
+            productMinDto.setPicUrl(fullProduct.getPic_url());
 
-            productMinDtoList.add(productMinDto);
-        }
 
-        return productMinDtoList;
+        return productMinDto;
     }
 }

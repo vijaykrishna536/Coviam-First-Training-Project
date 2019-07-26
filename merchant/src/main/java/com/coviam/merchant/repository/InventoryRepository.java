@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InventoryRepository extends MongoRepository<Inventory, Long> {
+public interface InventoryRepository extends MongoRepository<Inventory, String> {
 
-    List<Inventory> findByProductId(Long productId);
+    List<Inventory> findByProductId(String productId);
+
+    List<Inventory> findAllLimit(int limit);
+
 }

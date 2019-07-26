@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MerchantRepository extends MongoRepository<Merchant, Long> {
+public interface MerchantRepository extends MongoRepository<Merchant, String> {
 
-    List<Merchant> findById(Long mid);
+    List<Merchant> findById(String mid);
 
 }

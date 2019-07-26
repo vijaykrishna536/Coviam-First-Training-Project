@@ -8,6 +8,6 @@ public interface ProductInventoryService {
 
 
     // returns min product details to caller
-    List<ProductMinDto> getMinProductByPid(String pid);
+    ProductMinDto getMinProductByPid(String pid);
 
 }

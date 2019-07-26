@@ -22,14 +22,14 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // count merchants selling pid
     @Override
-    public Integer countMerchantForProduct(Long productId) {
+    public Integer countMerchantForProduct(String productId) {
 
         return this.fetchMerchantsForProduct(productId).size();
     }
 
     // get stock for pid
     @Override
-    public Integer getStockOf(Long pid) {
+    public Integer getStockOf(String pid) {
         List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
         int stock = 0;
         for (Inventory inventory : inventoryList) {
@@ -41,7 +41,7 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // returns list of merchants selling pid
     @Override
-    public List<Merchant> fetchMerchantsForProduct(Long pid) {
+    public List<Merchant> fetchMerchantsForProduct(String pid) {
 
         List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
         List<Merchant> merchantList = new ArrayList<>();
@@ -54,7 +54,7 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // get best price for pid
     @Override
-    public Double getBestPrice(Long pid) {
+    public Double getBestPrice(String pid) {
         List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
 
         Double minPrice = Double.valueOf(0);
@@ -66,7 +66,7 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // fetch inventory for pid
     @Override
-    public List<Inventory> fetchInventoryForPid(Long pid) {
+    public List<Inventory> fetchInventoryForPid(String pid) {
         return null;
     }
 
@@ -75,10 +75,21 @@ public class InventoryServiceImpl implements InventoryServices {
     @Override
     public void insert() {
         Inventory inventory = new Inventory();
-        inventory.setId(Long.valueOf(2));
-        inventory.setProductId(Long.valueOf(23));
+        inventory.setId(String.valueOf(2));
+        inventory.setProductId(String.valueOf(23));
 
 
         inventoryRepository.insert(inventory);
+    }
+
+    @Override
+    public List<Inventory> findAll() {
+        return this.inventoryRepository.findAll();
+    }
+
+
+    @Override
+    public List<Inventory> findAllLimit(int limit) {
+        return inventoryRepository.findAllLimit(limit);
     }
 }
