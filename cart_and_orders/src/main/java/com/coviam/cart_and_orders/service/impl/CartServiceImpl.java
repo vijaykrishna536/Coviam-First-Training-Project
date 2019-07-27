@@ -31,7 +31,7 @@ public class CartServiceImpl implements CartService {
         cart.setCustomerId(customerId);
         cartRepository.save(cart);
         CartDto cartDto = new CartDto();
-        BeanUtils.copyProperties(cart,cartDto);
+        BeanUtils.copyProperties(cart, cartDto);
         return cartDto;
     }
 
@@ -39,16 +39,14 @@ public class CartServiceImpl implements CartService {
     public CartDto getCartDetail(Long customerId) {
 
         Cart cart = cartRepository.findByCustomerId(customerId);
-        if(cart== null){
-            return  null;
-        }
+        if (cart == null) { return null; }
 
         CartDto cartDto = new CartDto();
-        BeanUtils.copyProperties(cart,cartDto);
-        List<CartItemDto> cartItemDtoList=cartItemService.getAllCartItems();
+        BeanUtils.copyProperties(cart, cartDto);
+        List<CartItemDto> cartItemDtoList = cartItemService.getCartItemsByCustomerId(customerId);
         cartDto.setCartItemDtoList(cartItemDtoList);
         cartDto.getTotalUtil();
-
+        //System.out.println("************************* done");
         return cartDto;
     }
 

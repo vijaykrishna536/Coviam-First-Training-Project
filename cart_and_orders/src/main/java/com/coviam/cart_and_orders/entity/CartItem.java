@@ -14,7 +14,7 @@ public class CartItem {
 
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid",strategy = "uuid2")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = CartItem.ID_COLUMN, updatable = false, nullable = false)
     private String id;
 
@@ -65,9 +65,13 @@ public class CartItem {
         this.merchantId = merchantId;
     }
 
-    public Cart getCartId() { return cart; }
+    public Cart getCartId() {
+        return cart;
+    }
 
-    public void setCartId(Cart cartId) { this.cart = cartId; }
+    public void setCartId(Cart cartId) {
+        this.cart = cartId;
+    }
 
     public Long getCustomerId() {
         return customerId;

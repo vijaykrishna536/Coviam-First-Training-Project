@@ -3,7 +3,6 @@ package com.coviam.cart_and_orders.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.beans.Transient;
 
 @Entity
 @Table(name = Cart.TABLE_NAME)
@@ -14,7 +13,7 @@ public class Cart {
 
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid",strategy = "uuid2")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = Cart.ID_COLUMN, updatable = false, nullable = false)
     private String id;
 
@@ -36,7 +35,6 @@ public class Cart {
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
-
 
 
 }

@@ -26,7 +26,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public Integer addToCart(CartItem cartItem) {
 
-        if(cartItem!=null) {
+        if (cartItem != null) {
 
             Cart cart = cartRepository.findByCustomerId(cartItem.getCustomerId());
             cartItem.setCartId(cart);
@@ -39,10 +39,10 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public Integer deleteAnItem(CartItem cartItem) {
 
-        String productId=cartItem.getProductId();
-        String merchantId=cartItem.getMerchantId();
+        String productId = cartItem.getProductId();
+        String merchantId = cartItem.getMerchantId();
 
-        cartItemRepository.deleteCartItem(productId,merchantId);
+        cartItemRepository.deleteCartItem(productId, merchantId);
 
 //        if(cartItemRepository.findExist(productId,merchantId)==0)
 //            return 1;
@@ -64,13 +64,13 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public Integer updateAnItem(CartItem cartItem) {
 
-        if(cartItem!=null){
+        if (cartItem != null) {
 
-            String productId=cartItem.getProductId();
-            String merchantId=cartItem.getMerchantId();
-            Integer quantity=cartItem.getQuantity();
+            String productId = cartItem.getProductId();
+            String merchantId = cartItem.getMerchantId();
+            Integer quantity = cartItem.getQuantity();
 
-            cartItemRepository.updateCartItem(quantity,productId,merchantId);
+            cartItemRepository.updateCartItem(quantity, productId, merchantId);
 
             return 1;
         }
@@ -81,13 +81,13 @@ public class CartItemServiceImpl implements CartItemService {
     public List<CartItemDto> getAllCartItems() {
 
         List<CartItemDto> cartItemDtoList = new ArrayList<>();
-        Iterable<CartItem> cartItemList=cartItemRepository.findAll();
+        Iterable<CartItem> cartItemList = cartItemRepository.findAll();
 
-        for (CartItem cartItem: cartItemList) {
+        for (CartItem cartItem : cartItemList) {
 
             CartItemDto cartItemDto = new CartItemDto();
-            BeanUtils.copyProperties(cartItem,cartItemDto);
-            cartItemDto.calTotalPrice(getPriceFromInventory(cartItem.getProductId(),cartItem.getMerchantId()));
+            BeanUtils.copyProperties(cartItem, cartItemDto);
+            cartItemDto.calTotalPrice(getPriceFromInventory(cartItem.getProductId(), cartItem.getMerchantId()));
             cartItemDtoList.add(cartItemDto);
         }
 
@@ -95,12 +95,31 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    public List<CartItemDto> getCartItemsByCustomerId(Long customerId) {
+
+        List<CartItem> cartItemList = cartItemRepository.findByCustomerId(customerId);
+        List<CartItemDto> cartItemDtoList = new ArrayList<>();
+
+        for (CartItem cartItem : cartItemList) {
+            CartItemDto cartItemDto = new CartItemDto();
+            BeanUtils.copyProperties(cartItem, cartItemDto);
+            cartItemDto.calTotalPrice(getPriceFromInventory(cartItem.getProductId(), cartItem.getMerchantId()));
+            cartItemDtoList.add(cartItemDto);
+        }
+
+        return cartItemDtoList;
+
+    }
+
+    @Override
     public Double getPriceFromInventory(String productId, String merchantId) {
 
         RestTemplate restTemplate = new RestTemplate();
         Double price
-                = restTemplate.getForObject("http://localhost:8081/getPriceFromInventory/" + productId +"/"+merchantId
+                = restTemplate.getForObject("http://localhost:8081/getPriceFromInventory/" + productId + "/" + merchantId
                 , Double.class);
         return price;
     }
+
+
 }

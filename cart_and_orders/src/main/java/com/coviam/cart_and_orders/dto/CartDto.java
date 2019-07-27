@@ -1,7 +1,5 @@
 package com.coviam.cart_and_orders.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 public class CartDto {
@@ -51,17 +49,19 @@ public class CartDto {
         this.totalQuantity = totalQuantity;
     }
 
-   public void getTotalUtil(){
+    public void getTotalUtil() {
 
-       Double sum=0.0;
-       Integer totalQuant=0;
+        Double sum = 0.0;
+        Integer totalQuant = 0;
 
-       for (CartItemDto cartItemDto: cartItemDtoList) {
-           sum=sum+cartItemDto.getTotalPrice();
-           totalQuant=totalQuant+cartItemDto.getQuantity();
-       }
-       setGrandTotalPrice(sum);
-       setTotalQuantity(totalQuant);
-   }
+        if (cartItemDtoList==null)   return;
+
+        for (CartItemDto cartItemDto : this.cartItemDtoList) {
+            sum = sum + cartItemDto.getTotalPrice();
+            totalQuant = totalQuant + cartItemDto.getQuantity();
+        }
+        this.setGrandTotalPrice(sum);
+        this.setTotalQuantity(totalQuant);
+    }
 
 }

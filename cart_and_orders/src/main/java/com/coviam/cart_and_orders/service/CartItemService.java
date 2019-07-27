@@ -8,9 +8,16 @@ import java.util.List;
 public interface CartItemService {
 
     Integer addToCart(CartItem cartItem);
+
     Integer deleteAnItem(CartItem cartItem);
+
     Integer deleteAllCartItems();
+
     Integer updateAnItem(CartItem cartItem);
+
     List<CartItemDto> getAllCartItems();
-    Double getPriceFromInventory(String productId,String merchantId);
+
+    List<CartItemDto> getCartItemsByCustomerId(Long customerId);
+
+    Double getPriceFromInventory(String productId, String merchantId);
 }
