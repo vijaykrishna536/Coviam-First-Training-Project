@@ -22,12 +22,12 @@ public interface InventoryServices {
     // fetch inventory for pid
     List<Inventory> fetchInventoryForPid(String productId);
 
-    // trust me...Ignore this function for now
-    void insert();
-
     List<Inventory> findByCategoryName(String categoryName);
 
     Double getPriceFromInventory(String pid, String mid);
 
     List<Inventory> findAll();
+
+
+    Inventory findByProductIdAndMerchantId(String pid, String mid);
 }

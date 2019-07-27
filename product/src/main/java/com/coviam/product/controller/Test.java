@@ -3,7 +3,6 @@ package com.coviam.product.controller;
 
 import com.coviam.product.entity.Product;
 import com.coviam.product.service.ProductService;
-import com.coviam.product.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +21,6 @@ public class Test {
 
     @GetMapping("/test/{categoryName}")
     public List<Product> getProductByCategory(@PathVariable(name = "categoryName") String categoryName) {
-       return productService.getProductByCategory(categoryName);
+        return productService.getProductByCategory(categoryName);
     }
 }

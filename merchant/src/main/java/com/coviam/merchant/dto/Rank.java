@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Rank implements Serializable {
     private String merchantName;
+    private String merchantId;
     private Integer rating;
     private Integer stock;
     private Double price;
@@ -47,5 +48,13 @@ public class Rank implements Serializable {
 
     public void setSold(Integer sold) {
         this.sold = sold;
+    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
     }
 }
