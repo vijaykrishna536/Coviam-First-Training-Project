@@ -7,6 +7,7 @@ import com.example.customermicroservice.repository.CustomerDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utility.PasswordEncrupt;
+import utility.UniqueStringGenerator;
 
 @Service
 public class CustomerServiceImp implements CustomerService {
@@ -31,21 +32,33 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public String addCustomer(CustomerCredentials customerCredentials) {
-        final String message1="Customer Already Exits";
-        final String message2="Account Successfully Created";
-        final String message3="Sorry please retry";
+    public Integer addCustomer(CustomerCredentials customerCredentials) {
+        //final String message1="Customer Already Exits";
+        //final String message2="Account Successfully Created";
+        //final String message3="Sorry please retry";
+        final int length=5;
+        CustomerDetail customerDetail= new CustomerDetail();
+        customerDetail.setName(customerCredentials.getName());
+        customerDetail.setCustomerId(customerCredentials.getCustomerId());
+        customerDetailsRepository.save(customerDetail);
+        customerCredentials.setCartId(UniqueStringGenerator.randomAlphaNumeric(length));
         if (customerCredentials != null) {
             if(checkRegisteredCustomer(customerCredentials.getEmail())) {
-                return message1;
+                return 1;
             }
             else {
                 customerCredentialRepository.save(customerCredentials);
-                //get new CustomerDetail
-                return message2;
+                return 0;
             }
         }
-        return message3;
+        return 2;
+    }
+
+
+    @Override
+    public Integer updateCustomer(CustomerCredentials customerCredentials) {
+     //   return customerCredentialRepository.updateDetail(customerCredentials.getCartId(),customerCredentials.getCustomerId());
+        return 1;
     }
 
     @Override
@@ -55,7 +68,8 @@ public class CustomerServiceImp implements CustomerService {
         final String message2="Something went wrong enter again";
         if(customerDetail!=null)
         {
-            customerDetailsRepository.save(customerDetail);
+            customerDetailsRepository.updateCustomerDetails(customerDetail.getBillingAddress(),
+                    customerDetail.getPhoneNumber(),customerDetail.getShippingAddress(),customerDetail.getCustomerId());
             return message1;
         }
         return message2;

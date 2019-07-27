@@ -1,7 +1,6 @@
 package com.example.customermicroservice.dto;
 
 public class IdMessageDto {
-
     private Long customerId;
     private String message;
 

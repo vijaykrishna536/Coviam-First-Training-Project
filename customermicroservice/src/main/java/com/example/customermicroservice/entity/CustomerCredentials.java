@@ -1,6 +1,8 @@
 package com.example.customermicroservice.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,12 +13,38 @@ public class CustomerCredentials {
     private static final String ID_COLUMN = "ID";
 
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id", updatable = false, nullable = false)
+//    private Long id;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = CustomerCredentials.ID_COLUMN, updatable = false, nullable = false)
     private Long customerId;
 
     private String email;
+    private String name;
+
+    private String cartId;
+
+    private String password;
+
+    public String getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getCustomerId() {
         return customerId;
@@ -26,7 +54,7 @@ public class CustomerCredentials {
         this.customerId = customerId;
     }
 
-    private String password;
+
 
     public String getEmail() {
         return email;
