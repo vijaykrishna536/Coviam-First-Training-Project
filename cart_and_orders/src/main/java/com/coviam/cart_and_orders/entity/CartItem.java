@@ -1,7 +1,9 @@
 package com.coviam.cart_and_orders.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
-import java.beans.Transient;
 
 @Entity
 @Table(name = CartItem.TABLE_NAME)
@@ -11,9 +13,10 @@ public class CartItem {
     private static final String ID_COLUMN = "ID";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid",strategy = "uuid2")
     @Column(name = CartItem.ID_COLUMN, updatable = false, nullable = false)
-    private Long id;
+    private String id;
 
     private Integer quantity;
 
@@ -26,14 +29,15 @@ public class CartItem {
     private Long customerId;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "cartId")
     private Cart cart;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

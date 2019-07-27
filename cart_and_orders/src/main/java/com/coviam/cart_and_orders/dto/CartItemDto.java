@@ -1,11 +1,15 @@
 package com.coviam.cart_and_orders.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class CartItemDto {
 
     private Integer quantity;
     private String productId;
     private String merchantId;
     private Long customerId;
+    @JsonIgnore
+    private Double totalPrice;
 
 
     public Long getCustomerId() { return customerId; }
@@ -35,5 +39,15 @@ public class CartItemDto {
     public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double price) {
+        this.totalPrice = price*getQuantity();
+    }
+
+    //call inventory micro service for product price
 
 }

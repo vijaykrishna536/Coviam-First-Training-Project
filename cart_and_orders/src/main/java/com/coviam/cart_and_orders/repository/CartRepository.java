@@ -8,8 +8,5 @@ public interface CartRepository extends CrudRepository<Cart,Long> {
 
     Cart findByCustomerId(Long customerId);
 
-    @Query(value = "SELECT id FROM CART WHERE customer_id =?1",nativeQuery = true)
-    Long findIdByCustomerId(Long ccId);
-
 
 }

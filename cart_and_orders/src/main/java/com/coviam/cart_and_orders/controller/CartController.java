@@ -20,8 +20,4 @@ public class CartController {
         return cartService.addCart(customerId);
     }
 
-    @GetMapping(value = "/getCartIdByCCId/{ccId}")
-    public Long getCartByCCId(@PathVariable Long ccId){
-        return cartService.getCartByCCId(ccId);
-    }
 }

@@ -5,7 +5,6 @@ import com.coviam.cart_and_orders.entity.CartItem;
 import com.coviam.cart_and_orders.repository.CartItemRepository;
 import com.coviam.cart_and_orders.repository.CartRepository;
 import com.coviam.cart_and_orders.service.CartItemService;
-import com.coviam.cart_and_orders.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,30 +18,56 @@ public class CartItemServiceImpl implements CartItemService {
     CartRepository cartRepository;
 
     @Override
-    public CartItem addToCart(CartItem cartItem) {
+    public Integer addToCart(CartItem cartItem) {
 
         if(cartItem!=null) {
 
             Cart cart = cartRepository.findByCustomerId(cartItem.getCustomerId());
             cartItem.setCartId(cart);
-            return cartItemRepository.save(cartItem);
-//            return 1;
+            cartItemRepository.save(cartItem);
+            return 1;
         }
-
-        return null;
-//        return 0;
+        return 0;
     }
 
     @Override
     public Integer deleteAnItem(CartItem cartItem) {
 
-        Cart cart=cartItem.getCartId();
-        Long cartId=cart.getId();
         String productId=cartItem.getProductId();
         String merchantId=cartItem.getMerchantId();
 
-        cartItemRepository.deleteCartItem(productId,cartId,merchantId);
+        cartItemRepository.deleteCartItem(productId,merchantId);
 
-        return cartItemRepository.findExist(productId,cartId,merchantId);
+//        if(cartItemRepository.findExist(productId,merchantId)==0)
+//            return 1;
+//
+//        return 0;
+        return 1;
+    }
+
+    @Override
+    public Integer deleteAllCartItems() {
+
+        //TODO: add exception handling
+
+        cartItemRepository.deleteAll();
+
+        return 1;
+    }
+
+    @Override
+    public Integer updateAnItem(CartItem cartItem) {
+
+        if(cartItem!=null){
+
+            String productId=cartItem.getProductId();
+            String merchantId=cartItem.getMerchantId();
+            Integer quantity=cartItem.getQuantity();
+
+            cartItemRepository.updateCartItem(quantity,productId,merchantId);
+
+            return 1;
+        }
+        return 0;
     }
 }
