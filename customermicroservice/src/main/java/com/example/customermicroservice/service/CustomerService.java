@@ -9,7 +9,9 @@ public interface CustomerService {
 
     CustomerCredentials checkLogin(String email, String password);
 
-    String addCustomer(CustomerCredentials customerCredentials);
+    Integer addCustomer(CustomerCredentials customerCredentials);
+
+    Integer updateCustomer(CustomerCredentials customerCredentials);
 
     boolean checkRegisteredCustomer(String email);
 

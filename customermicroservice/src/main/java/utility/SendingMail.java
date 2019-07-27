@@ -2,11 +2,8 @@ package utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-
 
 public class SendingMail implements CommandLineRunner {
 
@@ -52,13 +49,8 @@ public class SendingMail implements CommandLineRunner {
 
         msg.setSubject("hal");
         msg.setText("taad");
-        try {
-            javaMailSender.send(msg);
-        }
-        catch(Exception e)
-        {
-            e.getStackTrace();
-        }
+        javaMailSender.send(msg);
+
     }
 
 

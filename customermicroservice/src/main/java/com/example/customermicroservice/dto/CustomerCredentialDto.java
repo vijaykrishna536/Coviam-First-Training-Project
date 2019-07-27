@@ -4,7 +4,16 @@ public class CustomerCredentialDto {
 
     private String email;
     private String password;
-    //private String confirmPassword;
+    private String name;
+    private String cartId;
+
+    public String getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
+    }
 
     public String getEmail() {
         return email;
@@ -14,13 +23,13 @@ public class CustomerCredentialDto {
         this.email = email;
     }
 
-//    public String getConfirmPassword() {
-//        return confirmPassword;
-//    }
-//
-//    public void setConfirmPassword(String confirmPassword) {
-//        this.confirmPassword = confirmPassword;
-//    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPassword() {
         return password;
