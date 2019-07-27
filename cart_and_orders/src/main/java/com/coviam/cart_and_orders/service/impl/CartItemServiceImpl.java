@@ -1,7 +1,6 @@
 package com.coviam.cart_and_orders.service.impl;
 
 import com.coviam.cart_and_orders.dto.CartItemDto;
-import com.coviam.cart_and_orders.dto.PriceDto;
 import com.coviam.cart_and_orders.entity.Cart;
 import com.coviam.cart_and_orders.entity.CartItem;
 import com.coviam.cart_and_orders.repository.CartItemRepository;

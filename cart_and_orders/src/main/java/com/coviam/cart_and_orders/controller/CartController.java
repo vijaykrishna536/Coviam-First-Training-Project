@@ -14,7 +14,7 @@ public class CartController {
     @Autowired
     CartService cartService;
 
-    @PostMapping("/addCart/{customerId}")
+    @GetMapping("/addCart/{customerId}")
     public String addCart(@PathVariable("customerId") Long customerId){
         CartDto cartDto=cartService.addCart(customerId);
         return cartDto.getId();
@@ -22,7 +22,11 @@ public class CartController {
 
     @GetMapping("/getCartDetail/{customerId}")
     public CartDto getCartDetail(@PathVariable Long customerId){
-        return cartService.getCartDetail(customerId);
+        CartDto cartDto= cartService.getCartDetail(customerId);
+        if(cartDto!=null){
+            return  cartDto;
+        }
+        return null;
     }
 
 }
