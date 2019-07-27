@@ -20,6 +20,7 @@ public class CartItemController {
     public ResponseEntity<Integer> addToCart(@RequestBody CartItemDto cartItemDto){
         CartItem cartItem = new CartItem();
         BeanUtils.copyProperties(cartItemDto,cartItem);
+        //TODO: check all fields for null
         return new ResponseEntity<Integer>(cartItemService.addToCart(cartItem), HttpStatus.OK);
     }
 
