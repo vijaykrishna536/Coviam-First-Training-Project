@@ -1,16 +1,9 @@
-package com.coviam.merchant.entity;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.coviam.merchant.dto;
 
 import java.io.Serializable;
 
-@Document(collection = Merchant.COLLECTION_NAME)
-public class Merchant implements Serializable {
+public class MerchantDto implements Serializable {
 
-    public static final String COLLECTION_NAME = "merchant";
-
-    @Id
     private String id;
     private String merchantId;
     private String name;

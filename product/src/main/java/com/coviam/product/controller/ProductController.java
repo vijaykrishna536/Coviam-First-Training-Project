@@ -30,7 +30,8 @@ public class ProductController {
         return new HttpEntity<String>(headers);
     }
 
-    @GetMapping("/getAllProducts/{categoryName}")
+
+    @GetMapping("/getProductsByCategory/{categoryName}")
     public List<Product> getAllProductByCategory(@PathVariable String categoryName) {
         return productService.getProductByCategory(categoryName);
     }
@@ -57,6 +58,7 @@ public class ProductController {
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
+
 
     @GetMapping("/getAllCategories")
     public List<Category> getAllCategories() {

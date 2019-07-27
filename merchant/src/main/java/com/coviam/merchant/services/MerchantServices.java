@@ -1,8 +1,10 @@
 package com.coviam.merchant.services;
 
+import com.coviam.merchant.dto.MerchantDto;
+import com.coviam.merchant.entity.Merchant;
+
 public interface MerchantServices {
 
-    // trust me...Ignore this function for now
-    void insert();
-
+    //  Done
+    MerchantDto findByMerchantId(String mid);
 }

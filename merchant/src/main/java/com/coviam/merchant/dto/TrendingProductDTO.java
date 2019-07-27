@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 public class TrendingProductDTO implements Serializable {
     private String name;
-    private String pId;
-//    private String picUrl;
+    private String productId;
+    private String picUrl;
+    private String categoryName;
 
     public String getName() {
         return name;
@@ -15,19 +16,28 @@ public class TrendingProductDTO implements Serializable {
         this.name = name;
     }
 
-    public String getpId() {
-        return pId;
-    }
 
-    public void setpId(String pId) {
-        this.pId = pId;
-    }
-
-/*    public String getPicUrl() {
+    public String getPicUrl() {
         return picUrl;
     }
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
-    }*/
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
 }
