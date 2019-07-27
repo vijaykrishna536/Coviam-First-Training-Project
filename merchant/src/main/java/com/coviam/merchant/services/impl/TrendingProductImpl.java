@@ -6,6 +6,7 @@ import com.coviam.merchant.dto.TrendingProductDTO;
 import com.coviam.merchant.entity.Inventory;
 import com.coviam.merchant.services.InventoryServices;
 import com.coviam.merchant.services.TrendingProductService;
+import com.coviam.merchant.utils.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -55,7 +56,7 @@ public class TrendingProductImpl implements TrendingProductService {
         int i = 1;
         for (Inventory inventory : inventoryList) {
 
-            if (i>limit) break;
+            if (i > limit) break;
             i++;
 
             TrendingProductDTO trendingProductDTO = new TrendingProductDTO();
@@ -63,7 +64,7 @@ public class TrendingProductImpl implements TrendingProductService {
             trendingProductDTO.setName(inventory.getProductName());
             System.out.println(inventory.getProductName());
 
-            ProductMinDto productMinDto = this.getMinProductDtoByPid(inventory.getProductId());
+            ProductMinDto productMinDto = Utility.getMinProductDtoByPid(inventory.getProductId());
             trendingProductDTO.setPicUrl(productMinDto.getPicUrl());
             trendingProductDTO.setCategoryName(inventory.getCategoryName());
 
@@ -71,34 +72,6 @@ public class TrendingProductImpl implements TrendingProductService {
 
 
         }
-
         return trendingProductDTOS;
     }
 }
-/*
-
-    RestTemplate restTemplate = new RestTemplate();
-    final String productMSURL
-            = "http://" +
-            MerchantApplication.IP_NUPUR +
-            ":"
-            +
-            MerchantApplication.PORT_NUPUR +
-            "getProductByPid";
-
-
-    ResponseEntity<String> response
-            = restTemplate.getForEntity(productMSURL + "/" + pid, String.class);
-
-    String jsonString = response.getBody();
-
-    ObjectMapper mapper = new ObjectMapper();
-
-    JsonNode root;
-        try {
-                ProductDto product = mapper.readValue(jsonString, ProductDto.class);
-        System.out.println(product);
-        } catch (Exception e) {
-        e.printStackTrace();
-        }
-*/

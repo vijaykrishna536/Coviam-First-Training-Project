@@ -8,18 +8,18 @@ public class Utility {
 
     public static ProductMinDto getMinProductDtoByPid(String pid) {
         RestTemplate restTemplate = new RestTemplate();
-        final String productMSURL
+        /*final String productMSURL
                 = "http://" +
                 MerchantApplication.IP_NUPUR +
                 ":"
                 +
                 MerchantApplication.PORT_NUPUR +
-                "/getMinProductByPid/";
+                "/getMinProductByPid/";*/
 
-        System.out.println("*******************************");
-        System.out.println("Retrieving ProductMinDto for " + pid + "from:");
-        System.out.println(productMSURL + pid);
-        System.out.println("*******************************");
+        //System.out.println("*******************************");
+        //System.out.println("Retrieving ProductMinDto for " + pid + "from:");
+        //System.out.println(productMSURL + pid);
+        //System.out.println("*******************************");
 
         ProductMinDto productMinDto
                 = restTemplate.getForObject("http://localhost:8083/getMinProductByPid/" + pid

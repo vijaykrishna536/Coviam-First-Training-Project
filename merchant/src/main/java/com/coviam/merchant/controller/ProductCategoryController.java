@@ -21,8 +21,8 @@ public class ProductCategoryController {
     private InventoryServices inventoryServices;
 
 
-    @GetMapping("/getProductByCategory/{categoryName}")
-    public List<ProductMinDto> getProductByCategory(@PathVariable(name = "categoryName") String categoryName) {
+    /*@GetMapping("/getAllProductsByCategory/{categoryName}")
+    public List<ProductMinDto> getAllProductsByCategory(@PathVariable(name = "categoryName") String categoryName) {
 
         List<ProductMinDto> productMinDtos = new ArrayList<>();
         List<Inventory> inventoryList = inventoryServices.findByCategoryName(categoryName);
@@ -41,4 +41,7 @@ public class ProductCategoryController {
         }
         return productMinDtos;
     }
+    */
+
+
 }

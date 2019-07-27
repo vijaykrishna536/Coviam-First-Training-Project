@@ -27,6 +27,7 @@ public interface InventoryServices {
 
     List<Inventory> findByCategoryName(String categoryName);
 
+    Double getPriceFromInventory(String pid, String mid);
 
     List<Inventory> findAll();
 }

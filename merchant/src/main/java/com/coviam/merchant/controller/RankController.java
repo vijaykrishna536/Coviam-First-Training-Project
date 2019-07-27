@@ -28,8 +28,4 @@ public class RankController {
         return rankingService.fetchRankListForProduct(pid).get(0);
     }
 
-    /*@GetMapping("/getBestMerchant/{pid}")
-    public Rank getBestMerchant(@PathVariable(name = "pid") String pid) {
-        return rankingService.getBestMerchant(pid);
-    }*/
 }

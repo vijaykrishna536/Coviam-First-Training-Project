@@ -9,7 +9,7 @@ public class ProductMinDto implements Serializable {
     private String name;
     private String picUrl;
     private Double price;
-    private  String categoryName;
+    private String categoryName;
 
     public String getId() {
         return id;

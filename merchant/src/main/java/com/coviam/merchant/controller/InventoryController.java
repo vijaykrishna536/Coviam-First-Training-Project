@@ -1,17 +1,18 @@
 package com.coviam.merchant.controller;
 
-import com.coviam.merchant.dto.ProductDto;
 import com.coviam.merchant.entity.Inventory;
 import com.coviam.merchant.services.InventoryServices;
 import com.coviam.merchant.services.MerchantServices;
 import com.coviam.merchant.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class InventoryController {
 
@@ -42,13 +43,17 @@ public class InventoryController {
     }
 
 
-
-
     // just for testing don't release this to final product
     @GetMapping(value = "/getAllInventory")
     public List<Inventory> getAllInventory() {
         List<Inventory> inventoryList = inventoryServices.findAll();
         return inventoryList;
+    }
+
+
+    @GetMapping("/getPriceFromInventory/{pid}/{mid}")
+    public Double getPriceFromInventory(@PathVariable(name = "pid") String pid, @PathVariable(name = "mid") String mid) {
+        return inventoryServices.getPriceFromInventory(pid, mid);
     }
 
 

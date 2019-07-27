@@ -21,7 +21,7 @@ public class DELETEProductInventoryController {
 
     // Get min product by pid with different merchants
     @GetMapping("/getMinProductByPid/{pid}")
-    public ResponseEntity<?> getMinProductByPid(@PathVariable(name = "pid") String pid) {
-        return new ResponseEntity<ProductMinDto>(productInventoryService.getMinProductByPid(pid), HttpStatus.OK);
+    public ProductMinDto getMinProductByPid(@PathVariable(name = "pid") String pid) {
+        return productInventoryService.getMinProductByPid(pid);
     }
 }

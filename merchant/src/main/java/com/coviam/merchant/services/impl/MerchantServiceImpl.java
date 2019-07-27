@@ -1,7 +1,6 @@
 package com.coviam.merchant.services.impl;
 
 import com.coviam.merchant.dto.MerchantDto;
-import com.coviam.merchant.entity.Inventory;
 import com.coviam.merchant.entity.Merchant;
 import com.coviam.merchant.repository.MerchantRepository;
 import com.coviam.merchant.services.MerchantServices;

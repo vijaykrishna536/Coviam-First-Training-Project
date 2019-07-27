@@ -94,6 +94,13 @@ public class InventoryServiceImpl implements InventoryServices {
 
     }
 
+    @Override
+    public Double getPriceFromInventory(String pid, String mid) {
+        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+
+        return inventoryList.get(0).getPrice();
+    }
+
 
 /*
     public Double getBestPriceByPid(String productId) {

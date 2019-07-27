@@ -2,7 +2,6 @@ package com.coviam.merchant.services.impl;
 
 import com.coviam.merchant.dto.ProductDto;
 import com.coviam.merchant.dto.ProductMinDto;
-import com.coviam.merchant.entity.Inventory;
 import com.coviam.merchant.services.InventoryServices;
 import com.coviam.merchant.services.ProductService;
 import com.coviam.merchant.utils.Utility;
@@ -16,11 +15,14 @@ public class ProductServiceImpl implements ProductService {
     private InventoryServices inventoryServices;
 
     // This method will talk to Nupur's product Microservices
+    // todo problem not working
     @Override
     public ProductDto getProductFromInventory(String pid) {
 
         ProductDto productDto = new ProductDto();
         ProductMinDto productWithURL = Utility.getMinProductDtoByPid(pid);
+        System.out.println("*****************************************");
+        System.out.println("ye chal gya");
 
         productDto.setPicUrl(productWithURL.getPicUrl());
         productDto.setPrice(inventoryServices.getBestPrice(pid));
@@ -34,8 +36,6 @@ public class ProductServiceImpl implements ProductService {
 
         return productDto;
     }
-
-
 
 
 }

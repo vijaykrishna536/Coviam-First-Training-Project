@@ -10,6 +10,7 @@ import java.util.List;
 public interface MerchantRepository extends MongoRepository<Merchant, String> {
 
     List<Merchant> findById(String mid);
+
     Merchant findByMerchantId(String mid);
 
 }

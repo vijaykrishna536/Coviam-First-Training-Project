@@ -3,16 +3,11 @@ package com.coviam.merchant.services.impl;
 import com.coviam.merchant.dto.MerchantDto;
 import com.coviam.merchant.dto.Rank;
 import com.coviam.merchant.entity.Inventory;
-import com.coviam.merchant.entity.Merchant;
 import com.coviam.merchant.repository.InventoryRepository;
-import com.coviam.merchant.repository.MerchantRepository;
 import com.coviam.merchant.services.MerchantServices;
 import com.coviam.merchant.services.RankingService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,15 +44,14 @@ public class RankingServiceImpl implements RankingService {
             rank.setStock(inventory.getStock());
 
             rankList.add(rank);
-            }
+        }
+        if(rankList.size() == 0)
+            return null;
 
         //rankList.remove(0);
 
         return rankList;
     }
-
-
-
 
 
 }
