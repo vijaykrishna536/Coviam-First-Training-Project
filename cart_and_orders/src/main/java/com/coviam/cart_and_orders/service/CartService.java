@@ -11,5 +11,5 @@ import java.util.List;
 public interface CartService {
 
     CartDto addCart(Long customerId);
-    CartDto getCartDetail();
+    CartDto getCartDetail(Long customerId);
 }

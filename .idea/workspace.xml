@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f25ca7df-13ba-499b-bb48-c3e457818a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/dto/PriceDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/dto/CartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/dto/CartDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/dto/CartItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/dto/CartItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/entity/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/CartItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/CartItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/impl/CartItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/impl/CartItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart_and_orders/src/main/java/com/coviam/cart_and_orders/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customermicroservice/src/main/java/com/example/customermicroservice/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/customermicroservice/src/main/java/com/example/customermicroservice/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customermicroservice/src/main/java/com/example/customermicroservice/repository/CustomerCredentialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/customermicroservice/src/main/java/com/example/customermicroservice/repository/CustomerCredentialRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customermicroservice/src/main/java/com/example/customermicroservice/service/CustomerServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/customermicroservice/src/main/java/com/example/customermicroservice/service/CustomerServiceImp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/merchant/src/main/java/com/coviam/merchant/services/impl/TrendingProductImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+            <state relative-caret-position="488">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -266,8 +256,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/merchant/src/main/java/com/coviam/merchant/services/impl/TrendingProductImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+        <state relative-caret-position="488">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
         </state>
       </provider>
     </entry>

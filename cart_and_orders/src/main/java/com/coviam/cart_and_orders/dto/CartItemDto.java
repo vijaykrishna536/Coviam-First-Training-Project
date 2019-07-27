@@ -4,12 +4,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class CartItemDto {
 
+    private String id;
     private Integer quantity;
     private String productId;
     private String merchantId;
     private Long customerId;
     private Double totalPrice;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Long getCustomerId() { return customerId; }
 
@@ -43,10 +51,13 @@ public class CartItemDto {
         return totalPrice;
     }
 
-    public void setTotalPrice(Double price) {
-        this.totalPrice = price*getQuantity();
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
+    public void calTotalPrice(Double price){
+        this.totalPrice = price*this.quantity;
+    }
     //call inventory micro service for product price
 
 }

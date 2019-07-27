@@ -85,11 +85,10 @@ public class CartItemServiceImpl implements CartItemService {
         Iterable<CartItem> cartItemList=cartItemRepository.findAll();
 
         for (CartItem cartItem: cartItemList) {
-            Double price= getPriceFromInventory(cartItem.getProductId(),cartItem.getMerchantId());
-            System.out.println("price is "+price);
+
             CartItemDto cartItemDto = new CartItemDto();
-            cartItemDto.setTotalPrice(price);
             BeanUtils.copyProperties(cartItem,cartItemDto);
+            cartItemDto.calTotalPrice(getPriceFromInventory(cartItem.getProductId(),cartItem.getMerchantId()));
             cartItemDtoList.add(cartItemDto);
         }
 
@@ -101,7 +100,7 @@ public class CartItemServiceImpl implements CartItemService {
 
         RestTemplate restTemplate = new RestTemplate();
         Double price
-                = restTemplate.getForObject("http://172.16.20.95:8081/getPriceFromInventory/" + productId +"/"+merchantId
+                = restTemplate.getForObject("http://localhost:8081/getPriceFromInventory/" + productId +"/"+merchantId
                 , Double.class);
         return price;
     }

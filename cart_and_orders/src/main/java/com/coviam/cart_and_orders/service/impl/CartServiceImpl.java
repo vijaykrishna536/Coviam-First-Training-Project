@@ -36,10 +36,16 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public CartDto getCartDetail() {
+    public CartDto getCartDetail(Long customerId) {
 
-        List<CartItemDto> cartItemDtoList=cartItemService.getAllCartItems();
+        Cart cart = cartRepository.findByCustomerId(customerId);
+        if(cart== null){
+            return  null;
+        }
+
         CartDto cartDto = new CartDto();
+        BeanUtils.copyProperties(cart,cartDto);
+        List<CartItemDto> cartItemDtoList=cartItemService.getAllCartItems();
         cartDto.setCartItemDtoList(cartItemDtoList);
         cartDto.getTotalUtil();
 

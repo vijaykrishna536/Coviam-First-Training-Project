@@ -15,13 +15,14 @@ public class CartController {
     CartService cartService;
 
     @PostMapping("/addCart/{customerId}")
-    public CartDto addCart(@PathVariable("customerId") Long customerId){
-        return cartService.addCart(customerId);
+    public String addCart(@PathVariable("customerId") Long customerId){
+        CartDto cartDto=cartService.addCart(customerId);
+        return cartDto.getId();
     }
 
-    @GetMapping("/getCartDetail")
-    public CartDto getCartDetail(){
-        return cartService.getCartDetail();
+    @GetMapping("/getCartDetail/{customerId}")
+    public CartDto getCartDetail(@PathVariable Long customerId){
+        return cartService.getCartDetail(customerId);
     }
 
 }
