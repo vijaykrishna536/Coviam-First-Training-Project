@@ -45,6 +45,7 @@ CustomerController {
 
     @RequestMapping(value = "/getCustomerDetail", method = RequestMethod.GET)
     public ResponseEntity<?> getCustomerDetails(@RequestParam(value = "cid") Long customerId){
+
         String message="Customer Detail Does not Exist";
         CustomerDetailsDto customerDetailsDto = new CustomerDetailsDto();
         CustomerDetail customerDetail= customerService.getCustomerDetails(customerId);
@@ -62,7 +63,6 @@ CustomerController {
 
         return new  ResponseEntity<String>(customerService.addCustomerDetails(customerDetail),HttpStatus.OK);
     }
-
 
 
 

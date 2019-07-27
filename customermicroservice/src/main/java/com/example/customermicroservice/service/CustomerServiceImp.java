@@ -41,6 +41,7 @@ public class CustomerServiceImp implements CustomerService {
             }
             else {
                 customerCredentialRepository.save(customerCredentials);
+                //get new CustomerDetail
                 return message2;
             }
         }

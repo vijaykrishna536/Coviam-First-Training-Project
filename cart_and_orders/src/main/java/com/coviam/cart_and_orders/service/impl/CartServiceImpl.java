@@ -3,15 +3,14 @@ package com.coviam.cart_and_orders.service.impl;
 import com.coviam.cart_and_orders.dto.CartDto;
 import com.coviam.cart_and_orders.dto.CartItemDto;
 import com.coviam.cart_and_orders.entity.Cart;
-import com.coviam.cart_and_orders.entity.CartItem;
 import com.coviam.cart_and_orders.repository.CartItemRepository;
 import com.coviam.cart_and_orders.repository.CartRepository;
+import com.coviam.cart_and_orders.service.CartItemService;
 import com.coviam.cart_and_orders.service.CartService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +21,9 @@ public class CartServiceImpl implements CartService {
 
     @Autowired
     CartItemRepository cartItemRepository;
+
+    @Autowired
+    CartItemService cartItemService;
 
     @Override
     public CartDto addCart(Long customerId) {
@@ -34,18 +36,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<CartItemDto> getAllCartItems() {
+    public CartDto getCartDetail() {
 
-        List<CartItemDto> cartItemDtoList = new ArrayList<>();
-        Iterable<CartItem> cartItemList=cartItemRepository.findAll();
+        List<CartItemDto> cartItemDtoList=cartItemService.getAllCartItems();
+        CartDto cartDto = new CartDto();
+        cartDto.setCartItemDtoList(cartItemDtoList);
+        cartDto.getTotalUtil();
 
-        for (CartItem cartItem: cartItemList) {
-            CartItemDto cartItemDto = new CartItemDto();
-            BeanUtils.copyProperties(cartItem,cartItemDto);
-            cartItemDtoList.add(cartItemDto);
-        }
-
-        return cartItemDtoList;
+        return cartDto;
     }
 
 }

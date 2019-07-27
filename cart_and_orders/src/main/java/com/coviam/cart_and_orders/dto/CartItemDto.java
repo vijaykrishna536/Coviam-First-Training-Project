@@ -8,7 +8,6 @@ public class CartItemDto {
     private String productId;
     private String merchantId;
     private Long customerId;
-    @JsonIgnore
     private Double totalPrice;
 
 

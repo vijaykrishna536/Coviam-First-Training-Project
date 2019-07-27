@@ -11,6 +11,8 @@ public interface CustomerCredentialRepository extends CrudRepository<CustomerCre
     @Query(value = "Select * from Customer_Credentials where email = ?1", nativeQuery = true)
     CustomerCredentials checkLogin(String email);
 
+    //TODO: remove repetetive code
+
     @Query(value = "Select * from Customer_Credentials where email = ?1", nativeQuery = true)
     CustomerCredentials findEmail(String email);
 }

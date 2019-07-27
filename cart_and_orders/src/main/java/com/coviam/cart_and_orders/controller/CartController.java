@@ -1,7 +1,6 @@
 package com.coviam.cart_and_orders.controller;
 
 import com.coviam.cart_and_orders.dto.CartDto;
-import com.coviam.cart_and_orders.service.CartItemService;
 import com.coviam.cart_and_orders.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +14,14 @@ public class CartController {
     @Autowired
     CartService cartService;
 
-    @PostMapping("addCart/{customerId}")
+    @PostMapping("/addCart/{customerId}")
     public CartDto addCart(@PathVariable("customerId") Long customerId){
         return cartService.addCart(customerId);
+    }
+
+    @GetMapping("/getCartDetail")
+    public CartDto getCartDetail(){
+        return cartService.getCartDetail();
     }
 
 }
