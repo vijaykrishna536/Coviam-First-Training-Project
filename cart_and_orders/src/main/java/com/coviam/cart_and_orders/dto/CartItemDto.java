@@ -8,9 +8,27 @@ public class CartItemDto {
     private String merchantId;
     private Long customerId;
     private Double totalPrice;
+    private String productName;
+    private String productUrl;
 
     public String getId() {
         return id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
     }
 
     public void setId(String id) {

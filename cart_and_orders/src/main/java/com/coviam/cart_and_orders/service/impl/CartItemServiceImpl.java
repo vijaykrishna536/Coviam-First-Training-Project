@@ -76,11 +76,26 @@ public class CartItemServiceImpl implements CartItemService {
             String merchantId = cartItem.getMerchantId();
             Integer quantity = cartItem.getQuantity();
 
+            if(quantity>getStockFromInventory(productId,merchantId)){
+
+                return 0;
+            }
+
             cartItemRepository.updateCartItem(quantity, productId, merchantId);
 
             return 1;
         }
         return 0;
+    }
+
+    public Integer getStockFromInventory(String productId,String merchantId){
+
+        RestTemplate restTemplate = new RestTemplate();
+        Integer quantity
+                = restTemplate.getForObject("http://localhost:8081/getQuantityFromInventory/" + productId + "/" + merchantId
+                , Integer.class);
+
+        return quantity;
     }
 
     @Override
@@ -111,7 +126,6 @@ public class CartItemServiceImpl implements CartItemService {
             BeanUtils.copyProperties(cartItem, cartItemDto);
             cartItemDto.calTotalPrice(getPriceFromInventory(cartItem.getProductId(), cartItem.getMerchantId()));
             cartItemDtoList.add(cartItemDto);
-            System.out.println("Quantity  "+cartItemDto.getQuantity());
         }
 
         return cartItemDtoList;
