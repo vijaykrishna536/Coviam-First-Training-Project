@@ -9,9 +9,13 @@ public interface CartItemService {
 
     Integer addToCart(CartItem cartItem);
 
-    Integer deleteAnItem(CartItem cartItem);
+    //Integer deleteAnItem(CartItem cartItem);
 
-    Integer deleteAllCartItems();
+    Integer deleteAnItem(String cartItemId);
+
+    //Integer deleteAllCartItems();
+
+    Integer deleteAllCartItems(Long customerId);
 
     Integer updateAnItem(CartItem cartItem);
 

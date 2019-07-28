@@ -24,16 +24,21 @@ public class CartItemController {
         return new ResponseEntity<Integer>(cartItemService.addToCart(cartItem), HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteAnItem")
-    public ResponseEntity<Integer> deleteAnItem(@RequestBody CartItemDto cartItemDto) {
-        CartItem cartItem = new CartItem();
-        BeanUtils.copyProperties(cartItemDto, cartItem);
-        return new ResponseEntity<Integer>(cartItemService.deleteAnItem(cartItem), HttpStatus.OK);
+//    @DeleteMapping("/deleteAnItem")
+//    public ResponseEntity<Integer> deleteAnItem(@RequestBody CartItemDto cartItemDto) {
+//        CartItem cartItem = new CartItem();
+//        BeanUtils.copyProperties(cartItemDto, cartItem);
+//        return new ResponseEntity<Integer>(cartItemService.deleteAnItem(cartItem), HttpStatus.OK);
+//    }
+    @DeleteMapping("/deleteAnItem/{id}")
+    public ResponseEntity<Integer> deleteAnItem(@PathVariable String id) {
+
+        return new ResponseEntity<Integer>(cartItemService.deleteAnItem(id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteAllItem")
-    public ResponseEntity<Integer> deleteAllCartItems() {
-        return new ResponseEntity<Integer>(cartItemService.deleteAllCartItems(), HttpStatus.OK);
+    @DeleteMapping("/deleteAllItem/{customerId}")
+    public ResponseEntity<Integer> deleteAllCartItems(@PathVariable Long customerId) {
+        return new ResponseEntity<Integer>(cartItemService.deleteAllCartItems(customerId), HttpStatus.OK);
     }
 
     @PutMapping("/updateItem")
