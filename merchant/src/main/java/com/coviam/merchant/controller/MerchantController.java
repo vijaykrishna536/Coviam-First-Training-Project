@@ -2,7 +2,6 @@ package com.coviam.merchant.controller;
 
 
 import com.coviam.merchant.dto.MerchantDto;
-import com.coviam.merchant.entity.Merchant;
 import com.coviam.merchant.services.MerchantServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +18,7 @@ public class MerchantController {
 
     @GetMapping("/getMerchantByMid/{mid}")
     public MerchantDto findByMerchantId(@PathVariable(name = "mid") String merchantId) {
+        if (merchantId == null) return null;
         return merchantServices.findByMerchantId(merchantId);
     }
 }

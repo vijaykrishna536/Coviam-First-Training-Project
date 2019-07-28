@@ -11,7 +11,10 @@ public interface InventoryServices {
     Integer countMerchantForProduct(String productId);
 
     // get stock for pid
-    Integer getStockOf(String pid);
+    Integer getStockByPid(String pid);
+
+    // get stock for pid
+    Integer getStockByPidAndMid(String pid, String mid);
 
     // returns best price for pid
     Double getBestPrice(String productId);
@@ -30,4 +33,8 @@ public interface InventoryServices {
 
 
     Inventory findByProductIdAndMerchantId(String pid, String mid);
+
+    List<Inventory> findByProductId(String pid);
+
+    List<Inventory> saveAll(List<Inventory> inventories);
 }

@@ -20,6 +20,7 @@ public class ProductInventoryController {
     // Get min product by pid with different merchants
     @GetMapping("/getMinProductByPid/{pid}")
     public ProductMinDto getMinProductByPid(@PathVariable(name = "pid") String pid) {
+        if (pid == null) return null;
         return productInventoryService.getMinProductByPid(pid);
     }
 }

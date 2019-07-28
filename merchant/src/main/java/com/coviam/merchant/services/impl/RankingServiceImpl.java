@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,6 +27,8 @@ public class RankingServiceImpl implements RankingService {
     //Returns ranklist
     @Override
     public List<Rank> fetchRankListForProduct(String pid) {
+        if (pid == null) return null;
+
         List<Rank> rankList = new ArrayList<>();
         // fetching all the merchants for product pid
         List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
@@ -36,9 +37,6 @@ public class RankingServiceImpl implements RankingService {
 
             Rank rank = new Rank();
             MerchantDto merchantDto = merchantServices.findByMerchantId(inventory.getMerchantId());
-
-            // merchantDto = new MerchantDto();
-            //BeanUtils.copyProperties(merchant, merchantDto);
 
             rank.setMerchantName(merchantDto.getName());
             rank.setPrice(inventory.getPrice());
@@ -55,9 +53,7 @@ public class RankingServiceImpl implements RankingService {
         });
 
 
-
-
-        if(rankList.size() == 0)
+        if (rankList.size() == 0)
             return null;
 
         //rankList.remove(0);

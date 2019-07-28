@@ -18,5 +18,4 @@ public interface InventoryRepository extends MongoRepository<Inventory, String> 
     //List<Inventory> findAllLimit(int limit);
 
 
-
 }

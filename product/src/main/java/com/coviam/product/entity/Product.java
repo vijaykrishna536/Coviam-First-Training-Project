@@ -15,7 +15,7 @@ import java.util.List;
 public class Product implements Serializable {
 
     @Id
-    private String id;
+    private String _id;
     private String pId;
     private String name;
     private String picUrl;
@@ -26,12 +26,12 @@ public class Product implements Serializable {
     @DBRef
     private Category category;*/
 
-    public String getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getpId() {

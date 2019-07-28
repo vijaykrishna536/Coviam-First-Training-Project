@@ -2,11 +2,13 @@ package com.coviam.merchant.dto;
 
 import java.io.Serializable;
 
-public class TrendingProductDTO implements Serializable {
+public class TrendingProductDTO implements Serializable, Comparable<TrendingProductDTO> {
     private String name;
     private String productId;
     private String picUrl;
     private String categoryName;
+    private Integer stock;
+    private Integer sold;
 
     public String getName() {
         return name;
@@ -39,5 +41,26 @@ public class TrendingProductDTO implements Serializable {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Integer getSold() {
+        return sold;
+    }
+
+    public void setSold(Integer sold) {
+        this.sold = sold;
+    }
+
+    @Override
+    public int compareTo(TrendingProductDTO other) {
+        return Integer.compare(this.getSold(), other.getSold());
     }
 }

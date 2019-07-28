@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(String pId) {
-
         //TODO: add exception to handle null products
+        if (pId == null) return null;
         return productRepository.findByPId(pId);
     }
 
@@ -32,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductByCategory(String categoryName) {
+        if (categoryName == null) return productRepository.findAll();
         return productRepository.findByCategoryName(categoryName);
     }
 
@@ -42,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
         return categoryList;
     }
 
-    @Override
+    /*@Override
     public Product addProduct(Product product) {
         return productRepository.insert(product);
     }
@@ -60,5 +61,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct() {
         return null;
+    }*/
+
+    @Override
+    public List<Product> saveAll(List<Product> productList) {
+        return productRepository.saveAll(productList);
     }
+
+
 }

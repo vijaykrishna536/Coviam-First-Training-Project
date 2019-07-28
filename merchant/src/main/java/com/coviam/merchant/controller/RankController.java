@@ -25,6 +25,7 @@ public class RankController {
 
     @GetMapping("/getBestMerchant/{pid}")
     public Rank getBestMerchant(@PathVariable(name = "pid") String pid) {
+        if (pid == null) return null;
         return rankingService.fetchRankListForProduct(pid).get(0);
     }
 

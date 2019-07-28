@@ -28,18 +28,19 @@ public class InventoryController {
     // count merchant for pid
     @GetMapping(value = "/countMerchantForProduct/{productId}")
     public Integer countMerchantForProduct(@PathVariable(name = "productId") String productId) {
-        System.out.println("Inside test1");
         if (productId != null)
             return (inventoryServices.countMerchantForProduct(productId));
 
         System.out.println("productId is null");
-        return null;
+        return -1;
     }
 
     @GetMapping(value = "/getBestPrice/{pid}")
     public Double getBestPrice(@PathVariable(name = "pid") String pid) {
-        return inventoryServices.getBestPrice(pid);
-
+        if (pid != null)
+            return inventoryServices.getBestPrice(pid);
+        System.out.println("pid is null");
+        return -1.0;
     }
 
 
@@ -56,14 +57,14 @@ public class InventoryController {
         return inventoryServices.getPriceFromInventory(pid, mid);
     }
 
+    @GetMapping("/getStockByPidAndMid/{pid}/{mid}")
+    public Integer getStockByPidAndMid(@PathVariable(name = "pid") String pid,
+                                       @PathVariable(name = "mid") String mid) {
 
-    /*@GetMapping(value = "/testAddMerchant")
-    public void insertMerchant() {
-        merchantServices.insert();
+        if (pid == null || mid == null) return -2;
+
+        return inventoryServices.getStockByPidAndMid(pid, mid);
     }
 
-    @GetMapping(value = "/testAddInventory")
-    public void insertInventory() {
-        inventoryServices.insert();
-    }*/
+
 }

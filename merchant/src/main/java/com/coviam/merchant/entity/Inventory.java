@@ -23,6 +23,7 @@ public class Inventory implements Serializable {
     private String productName;
 
     public String getId() {
+
         return id;
     }
 
@@ -44,6 +45,14 @@ public class Inventory implements Serializable {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Double getPrice() {
@@ -76,13 +85,5 @@ public class Inventory implements Serializable {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
     }
 }

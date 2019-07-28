@@ -27,11 +27,11 @@ public class ProductServiceImpl implements ProductService {
         productDto.setPicUrl(productWithURL.getPicUrl());
         productDto.setPrice(inventoryServices.getBestPrice(pid));
         productDto.setpId(pid);
-        productDto.setStock(inventoryServices.getStockOf(pid));
+        productDto.setStock(inventoryServices.getStockByPid(pid));
         productDto.setCategory(productWithURL.getCategoryName());
         productDto.setName(productWithURL.getName());
-        productDto.setStock(inventoryServices.getStockOf(pid));
-        productDto.setStock(inventoryServices.getStockOf(pid));
+        productDto.setStock(inventoryServices.getStockByPid(pid));
+        productDto.setStock(inventoryServices.getStockByPid(pid));
         productDto.setMerchantCount(inventoryServices.countMerchantForProduct(pid));
 
         return productDto;
