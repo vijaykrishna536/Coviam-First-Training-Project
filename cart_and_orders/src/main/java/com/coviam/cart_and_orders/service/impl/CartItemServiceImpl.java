@@ -28,7 +28,9 @@ public class CartItemServiceImpl implements CartItemService {
 
         if (cartItem != null) {
 
-            if(cartItemRepository.findByCustomerProductMerchantId(cartItem.getCustomerId(),cartItem.getProductId(),cartItem.getMerchantId())!=null){
+            CartItem cartItem1=cartItemRepository.findByCustomerProductMerchantId(cartItem.getCustomerId(),cartItem.getProductId(),cartItem.getMerchantId());
+
+            if(cartItem1!=null){
                 return 0;
             }
 
@@ -109,6 +111,7 @@ public class CartItemServiceImpl implements CartItemService {
             BeanUtils.copyProperties(cartItem, cartItemDto);
             cartItemDto.calTotalPrice(getPriceFromInventory(cartItem.getProductId(), cartItem.getMerchantId()));
             cartItemDtoList.add(cartItemDto);
+            System.out.println("Quantity  "+cartItemDto.getQuantity());
         }
 
         return cartItemDtoList;

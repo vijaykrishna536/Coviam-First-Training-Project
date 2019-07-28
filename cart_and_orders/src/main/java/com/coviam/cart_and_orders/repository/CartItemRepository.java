@@ -29,5 +29,5 @@ public interface CartItemRepository extends CrudRepository<CartItem, Long> {
     List<CartItem> findByCustomerId(Long customerId);
 
     @Query(value = "Select * FROM cartitem WHERE customer_id= :customerId AND product_id= :productId AND merchant_id= :merchantId",nativeQuery=true)
-    Cart findByCustomerProductMerchantId(Long customerId,String productId, String merchantId);
+    CartItem findByCustomerProductMerchantId(@Param(value = "customerId") Long customerId,@Param(value = "productId")String productId, @Param(value = "merchantId")String merchantId);
 }
