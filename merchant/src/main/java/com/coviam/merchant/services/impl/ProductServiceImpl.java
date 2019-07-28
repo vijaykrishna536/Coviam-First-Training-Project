@@ -21,9 +21,9 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDto productDto = new ProductDto();
         ProductMinDto productWithURL = Utility.getMinProductDtoByPid(pid);
-        System.out.println("*****************************************");
+        /*System.out.println("*****************************************");
         System.out.println("ye chal gya");
-
+*/
         productDto.setPicUrl(productWithURL.getPicUrl());
         productDto.setPrice(inventoryServices.getBestPrice(pid));
         productDto.setpId(pid);

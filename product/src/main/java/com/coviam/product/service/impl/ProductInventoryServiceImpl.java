@@ -19,9 +19,8 @@ public class ProductInventoryServiceImpl implements com.coviam.product.service.P
 
         ProductMinDto productMinDto = new ProductMinDto();
         productMinDto.setName(fullProduct.getName());
-        productMinDto.setPicUrl(fullProduct.getPic_url());
+        productMinDto.setPicUrl(fullProduct.getPicUrl());
         productMinDto.setpId(fullProduct.getpId());
-        productMinDto.setPicUrl(fullProduct.getPic_url());
         productMinDto.setCategoryName(fullProduct.getCategoryName());
         return productMinDto;
     }

@@ -3,7 +3,6 @@ package com.coviam.product.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -23,10 +22,17 @@ public class Product implements Serializable {
     private List<Feature> features;
     private String description;
     private String categoryName;
-
+/*
     @DBRef
-    private Category category;
+    private Category category;*/
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getpId() {
         return pId;
@@ -44,12 +50,20 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public String getPic_url() {
+    public String getPicUrl() {
         return picUrl;
     }
 
-    public void setPic_url(String picUrl) {
+    public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
+    }
+
+    public List<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(List<Feature> features) {
+        this.features = features;
     }
 
     public String getDescription() {
@@ -67,4 +81,12 @@ public class Product implements Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+/*
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }*/
 }

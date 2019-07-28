@@ -5,18 +5,13 @@ import com.coviam.product.entity.Category;
 import com.coviam.product.entity.Product;
 import com.coviam.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -43,10 +38,11 @@ public class ProductController {
             System.out.println(price);*/
             ProductMinDto productMinDto = new ProductMinDto();
             productMinDto.setCategoryName(categoryName);
-            productMinDto.setPicUrl(product.getPic_url());
+            productMinDto.setPicUrl(product.getPicUrl());
             productMinDto.setpId(product.getpId());
             productMinDto.setName(product.getName());
             productMinDto.setPrice(price);
+            productMinDto.setCategoryName(categoryName);
 
             productMinDtoList.add(productMinDto);
 
