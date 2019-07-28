@@ -1,5 +1,6 @@
 package com.coviam.cart_and_orders.repository;
 
+import com.coviam.cart_and_orders.entity.Cart;
 import com.coviam.cart_and_orders.entity.CartItem;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +27,7 @@ public interface CartItemRepository extends CrudRepository<CartItem, Long> {
     Integer updateCartItem(@Param(value = "quantity") Integer quantity, @Param(value = "productId") String productId, @Param(value = "merchantId") String merchantId);
 
     List<CartItem> findByCustomerId(Long customerId);
+
+    @Query(value = "Select * FROM cartitem WHERE customer_id= :customerId AND product_id= :productId AND merchant_id= :merchantId",nativeQuery=true)
+    Cart findByCustomerProductMerchantId(Long customerId,String productId, String merchantId);
 }

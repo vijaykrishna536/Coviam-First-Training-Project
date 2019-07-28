@@ -28,6 +28,10 @@ public class CartItemServiceImpl implements CartItemService {
 
         if (cartItem != null) {
 
+            if(cartItemRepository.findByCustomerProductMerchantId(cartItem.getCustomerId(),cartItem.getProductId(),cartItem.getMerchantId())!=null){
+                return 0;
+            }
+
             Cart cart = cartRepository.findByCustomerId(cartItem.getCustomerId());
             cartItem.setCartId(cart);
             cartItemRepository.save(cartItem);
