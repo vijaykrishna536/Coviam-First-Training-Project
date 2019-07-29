@@ -30,13 +30,20 @@ public class InventoryServiceImpl implements InventoryServices {
 
     // get stock for pid
     @Override
-    public Integer getStockOf(String pid) {
+    public Integer getStockByPid(String pid) {
         List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
         int stock = 0;
         for (Inventory inventory : inventoryList) {
             stock += inventory.getStock();
         }
         return Integer.valueOf(stock);
+    }
+
+    @Override
+    public Integer getStockByPidAndMid(String pid, String mid) {
+        Inventory inventory = inventoryRepository.findByProductIdAndMerchantId(pid, mid);
+        if (inventory == null) return -1;
+        return Integer.valueOf(inventory.getStock());
     }
 
 
@@ -82,6 +89,20 @@ public class InventoryServiceImpl implements InventoryServices {
         return inventoryRepository.findByProductIdAndMerchantId(pid, mid);
     }
 
+    @Override
+    public List<Inventory> findByProductId(String pid) {
+        return inventoryRepository.findByProductId(pid);
+    }
+
+    @Override
+    public List<Inventory> saveAll(List<Inventory> inventories) {
+
+        for (Inventory inventory : inventories) {
+            inventoryRepository.save(inventory);
+        }
+        return inventories;
+    }
+
     public List<Inventory> findByCategoryName(String categoryName) {
         return inventoryRepository.findByCategoryName(categoryName);
 
@@ -89,11 +110,11 @@ public class InventoryServiceImpl implements InventoryServices {
 
     @Override
     public Double getPriceFromInventory(String pid, String mid) {
-        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+        Inventory inventory = inventoryRepository.findByProductIdAndMerchantId(pid, mid);
+        if (inventory == null)  return null;
 
-        return inventoryList.get(0).getPrice();
+        return inventory.getPrice();
     }
-
 
 /*
     public Double getBestPriceByPid(String productId) {

@@ -23,6 +23,7 @@ public class ProductInventoryController {
     // Not of any use right now
     @GetMapping(value = "/getProductFromInventory/{productId}")
     public ProductDto getProductByPid(@PathVariable(name = "productId") String productId) {
+        if (productId == null) return null;
         return productService.getProductFromInventory(productId);
     }
 }

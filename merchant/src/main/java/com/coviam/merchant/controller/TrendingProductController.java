@@ -18,7 +18,7 @@ public class TrendingProductController {
 
     @GetMapping(value = "/getTrendingProducts")
     public List<TrendingProductDTO> getTrendingProducts() {
-        return trendingProductService.getTrendingProducts();
+        return trendingProductService.fetchTrendingProducts();
     }
 
 

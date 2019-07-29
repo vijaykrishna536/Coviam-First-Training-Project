@@ -1,10 +1,18 @@
 package com.coviam.merchant.utils;
 
-import com.coviam.merchant.MerchantApplication;
 import com.coviam.merchant.dto.ProductMinDto;
+import com.coviam.merchant.repository.InventoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Utility {
+
+    @Autowired
+    private static InventoryRepository inventoryRepository;
 
     public static ProductMinDto getMinProductDtoByPid(String pid) {
         RestTemplate restTemplate = new RestTemplate();
@@ -27,5 +35,23 @@ public class Utility {
 
 
         return productMinDto;
+    }
+
+    public static List<ProductMinDto> getAllMinProducts() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<ProductMinDto[]> response = restTemplate.getForEntity(
+                "http://localhost:8083/getAllMinProducts", ProductMinDto[].class);
+        List<ProductMinDto> productMinDtoList = Arrays.asList(response.getBody());
+
+
+        for (ProductMinDto productMinDto : productMinDtoList) {
+            System.out.println(productMinDto.getName());
+        }
+//        System.out.println("*******************utility.getallminproduct");
+
+
+        return productMinDtoList;
+
     }
 }

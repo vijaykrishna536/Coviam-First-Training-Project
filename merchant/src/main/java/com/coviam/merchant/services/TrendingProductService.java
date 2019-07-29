@@ -7,4 +7,8 @@ import java.util.List;
 public interface TrendingProductService {
 
     List<TrendingProductDTO> getTrendingProducts();
+
+    List<TrendingProductDTO> fetchTrendingProducts();
+
+
 }

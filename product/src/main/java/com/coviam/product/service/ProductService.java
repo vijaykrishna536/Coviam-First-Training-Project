@@ -16,12 +16,14 @@ public interface ProductService {
 
     List<Category> getAllCategories();
 
-    Product addProduct(Product product);
+    /*Product addProduct(Product product);
 
     Category addCategory(Category category);
 
     void deleteProduct();
 
-    Product updateProduct();
+    Product updateProduct();*/
+
+    List<Product> saveAll(List<Product> product);
 
 }
