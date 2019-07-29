@@ -15,6 +15,10 @@ public class CartItemDto {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -29,10 +33,6 @@ public class CartItemDto {
 
     public void setProductUrl(String productUrl) {
         this.productUrl = productUrl;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Long getCustomerId() {

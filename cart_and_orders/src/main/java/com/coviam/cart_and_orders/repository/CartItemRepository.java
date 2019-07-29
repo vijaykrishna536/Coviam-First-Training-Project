@@ -1,6 +1,5 @@
 package com.coviam.cart_and_orders.repository;
 
-import com.coviam.cart_and_orders.entity.Cart;
 import com.coviam.cart_and_orders.entity.CartItem;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,11 +25,11 @@ public interface CartItemRepository extends CrudRepository<CartItem, String> {
     @Transactional
     @Modifying
     @Query(value = "UPDATE cartitem SET quantity= :quantity WHERE product_id= :productId AND merchant_id= :merchantId AND customer_id= :customerId", nativeQuery = true)
-    Integer updateCartItem(@Param(value = "quantity") Integer quantity, @Param(value = "productId") String productId, @Param(value = "merchantId") String merchantId,@Param(value = "customerId") Long customerId);
+    Integer updateCartItem(@Param(value = "quantity") Integer quantity, @Param(value = "productId") String productId, @Param(value = "merchantId") String merchantId, @Param(value = "customerId") Long customerId);
 
     List<CartItem> findByCustomerId(Long customerId);
 
-    @Query(value = "Select * FROM cartitem WHERE customer_id= :customerId AND product_id= :productId AND merchant_id= :merchantId",nativeQuery=true)
-    CartItem findByCustomerProductMerchantId(@Param(value = "customerId") Long customerId,@Param(value = "productId")String productId, @Param(value = "merchantId")String merchantId);
+    @Query(value = "Select * FROM cartitem WHERE customer_id= :customerId AND product_id= :productId AND merchant_id= :merchantId", nativeQuery = true)
+    CartItem findByCustomerProductMerchantId(@Param(value = "customerId") Long customerId, @Param(value = "productId") String productId, @Param(value = "merchantId") String merchantId);
 
 }

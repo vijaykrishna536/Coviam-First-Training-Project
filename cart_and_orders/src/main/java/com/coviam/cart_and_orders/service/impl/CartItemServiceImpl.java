@@ -29,9 +29,10 @@ public class CartItemServiceImpl implements CartItemService {
 
         if (cartItem != null) {
 
-            CartItem cartItem1=cartItemRepository.findByCustomerProductMerchantId(cartItem.getCustomerId(),cartItem.getProductId(),cartItem.getMerchantId());
+            //CartItem cartItem1 = cartItemRepository.findByCustomerIdAndProductIdAndMerchantId(cartItem.getCustomerId(), cartItem.getProductId(), cartItem.getMerchantId());
+            CartItem cartItem1 = cartItemRepository.findByCustomerProductMerchantId(cartItem.getCustomerId(), cartItem.getProductId(), cartItem.getMerchantId());
 
-            if(cartItem1!=null){
+            if (cartItem1 != null) {
                 return 0;
             }
 
@@ -62,9 +63,9 @@ public class CartItemServiceImpl implements CartItemService {
     public Integer deleteAllCartItems(Long customerId) {
 
         //TODO: add exception handling
-        List<CartItem> cartItems =cartItemRepository.findByCustomerId(customerId);
+        List<CartItem> cartItems = cartItemRepository.findByCustomerId(customerId);
 
-        if(cartItems.isEmpty())
+        if (cartItems.isEmpty())
             return 0;
 
         cartItemRepository.deleteByCustomerId(customerId);
@@ -80,21 +81,21 @@ public class CartItemServiceImpl implements CartItemService {
             String productId = cartItem.getProductId();
             String merchantId = cartItem.getMerchantId();
             Integer quantity = cartItem.getQuantity();
-            Long customerId=cartItem.getCustomerId();
+            Long customerId = cartItem.getCustomerId();
 
-            if(quantity>getStockFromInventory(productId,merchantId)){
+            if (quantity > getStockFromInventory(productId, merchantId)) {
 
                 return 0;
             }
 
-            cartItemRepository.updateCartItem(quantity, productId, merchantId,customerId);
+            cartItemRepository.updateCartItem(quantity, productId, merchantId, customerId);
 
             return 1;
         }
         return 0;
     }
 
-    public Integer getStockFromInventory(String productId,String merchantId){
+    public Integer getStockFromInventory(String productId, String merchantId) {
 
         RestTemplate restTemplate = new RestTemplate();
         Integer quantity
@@ -152,8 +153,9 @@ public class CartItemServiceImpl implements CartItemService {
     public Integer deleteAnItem(String cartItemId) {
         cartItemRepository.deleteById(cartItemId);
         Optional<CartItem> cartItem = cartItemRepository.findById(cartItemId);
-        if(cartItem!=null)
+        if (cartItem != null)
             return 1;
         return 0;
     }
+
 }

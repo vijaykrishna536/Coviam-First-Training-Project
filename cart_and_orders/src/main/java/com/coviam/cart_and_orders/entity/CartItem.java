@@ -41,6 +41,10 @@ public class CartItem {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -55,10 +59,6 @@ public class CartItem {
 
     public void setProductUrl(String productUrl) {
         this.productUrl = productUrl;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Integer getQuantity() {

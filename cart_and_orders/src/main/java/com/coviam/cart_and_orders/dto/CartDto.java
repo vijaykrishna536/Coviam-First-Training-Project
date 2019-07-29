@@ -54,7 +54,7 @@ public class CartDto {
         Double sum = 0.0;
         Integer totalQuant = 0;
 
-        if (cartItemDtoList==null)   return;
+        if (cartItemDtoList == null) return;
 
         for (CartItemDto cartItemDto : this.cartItemDtoList) {
             sum = sum + cartItemDto.getTotalPrice();

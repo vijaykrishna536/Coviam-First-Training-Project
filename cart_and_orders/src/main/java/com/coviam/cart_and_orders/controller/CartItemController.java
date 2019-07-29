@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class CartItemController {
 
     @Autowired
-    CartItemService cartItemService;
+    private CartItemService cartItemService;
 
     @PostMapping("/addToCart")
     public ResponseEntity<Integer> addToCart(@RequestBody CartItemDto cartItemDto) {
@@ -24,7 +24,7 @@ public class CartItemController {
         return new ResponseEntity<Integer>(cartItemService.addToCart(cartItem), HttpStatus.OK);
     }
 
-//    @DeleteMapping("/deleteAnItem")
+    //    @DeleteMapping("/deleteAnItem")
 //    public ResponseEntity<Integer> deleteAnItem(@RequestBody CartItemDto cartItemDto) {
 //        CartItem cartItem = new CartItem();
 //        BeanUtils.copyProperties(cartItemDto, cartItem);
@@ -47,5 +47,13 @@ public class CartItemController {
         BeanUtils.copyProperties(cartItemDto, cartItem);
         return new ResponseEntity<Integer>(cartItemService.updateAnItem(cartItem), HttpStatus.OK);
     }
+
+    /*@PostMapping("/checkOut/{cid}")
+    public ResponseEntity<Integer> checkOut(@PathVariable(name = "cid") Long cid) {
+
+
+        return null;
+    }*/
+
 
 }
