@@ -18,6 +18,10 @@ public class CustomerServiceImp implements CustomerService {
     @Autowired
     CustomerDetailsRepository customerDetailsRepository;
 
+
+
+
+
     @Override
     public CustomerCredentials checkLogin(String email, String password) {
         CustomerCredentials customerCredentials = customerCredentialRepository.checkLogin(email);
@@ -31,23 +35,34 @@ public class CustomerServiceImp implements CustomerService {
         return null;
     }
 
+
+
+
+
     @Override
     public Integer addCustomer(CustomerCredentials customerCredentials) {
-        //final String message1="Customer Already Exits";
-        //final String message2="Account Successfully Created";
-        //final String message3="Sorry please retry";
+
         final int length=5;
-        CustomerDetail customerDetail= new CustomerDetail();
-        customerDetail.setName(customerCredentials.getName());
-        customerDetail.setCustomerId(customerCredentials.getCustomerId());
-        customerDetailsRepository.save(customerDetail);
-        customerCredentials.setCartId(UniqueStringGenerator.randomAlphaNumeric(length));
+
         if (customerCredentials != null) {
             if(checkRegisteredCustomer(customerCredentials.getEmail())) {
                 return 1;
             }
             else {
+                customerCredentials.setCartId(UniqueStringGenerator.randomAlphaNumeric(length));
                 customerCredentialRepository.save(customerCredentials);
+                CustomerCredentials customerCredentials1 = customerCredentialRepository.findEmail(customerCredentials.getEmail());
+                System.out.println(customerCredentials1.getName());
+                CustomerDetail customerDetail= new CustomerDetail();
+                customerDetail.setName(customerCredentials1.getName());
+                System.out.println(customerCredentials1.getCustomerId());
+                System.out.println(customerCredentials1);
+                customerDetail.setCustomerCredentials(customerCredentials1);
+                System.out.println(customerDetail.getCustomerCredentials());
+                customerDetailsRepository.save(customerDetail);
+
+
+
                 return 0;
             }
         }
@@ -55,25 +70,34 @@ public class CustomerServiceImp implements CustomerService {
     }
 
 
-    @Override
-    public Integer updateCustomer(CustomerCredentials customerCredentials) {
-     //   return customerCredentialRepository.updateDetail(customerCredentials.getCartId(),customerCredentials.getCustomerId());
-        return 1;
-    }
+
+
 
     @Override
-    public String addCustomerDetails(CustomerDetail customerDetail)
+    public Integer updateCustomer(CustomerCredentials customerCredentials) {
+        return customerCredentialRepository.updateDetail(customerCredentials.getCartId(),customerCredentials.getCustomerId());
+
+    }
+
+
+
+
+    @Override
+    public Integer addCustomerDetails(CustomerDetail customerDetail)
     {
-        final String message1="Details Saved";
-        final String message2="Something went wrong enter again";
+        final Integer message1=1;
+        final Integer message2=0;
         if(customerDetail!=null)
         {
-            customerDetailsRepository.updateCustomerDetails(customerDetail.getBillingAddress(),
+            Integer alternate =customerDetailsRepository.updateCustomerDetails(customerDetail.getBillingAddress(),
                     customerDetail.getPhoneNumber(),customerDetail.getShippingAddress(),customerDetail.getCustomerId());
             return message1;
         }
         return message2;
     }
+
+
+
 
     @Override
     public boolean checkRegisteredCustomer(String email)
@@ -84,14 +108,28 @@ public class CustomerServiceImp implements CustomerService {
        return false;
     }
 
+
+
+
     @Override
     public CustomerDetail getCustomerDetails(Long customerId) {
         return customerDetailsRepository.getCustomerDetails(customerId);
     }
 
+
+
+
     @Override
     public CustomerCredentials authenticateEmail(String email) {
         CustomerCredentials customerCredentials = customerCredentialRepository.findEmail(email);
         return customerCredentials;
+    }
+
+
+
+    @Override
+    public CustomerCredentials findEmailByCustomerId(Long customerId)
+    {
+        return customerCredentialRepository.findEmailFromId(customerId);
     }
 }

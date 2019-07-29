@@ -1,6 +1,8 @@
 package com.example.customermicroservice.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,8 +21,10 @@ public class CustomerDetail {
     private Long phoneNumber;
     private String shippingAddress;
     private String billingAddress;
+
     @OneToOne
-    @JoinColumn(columnDefinition = "id")
+    @JsonIgnore
+    @JoinColumn(name = "customerId")
     private CustomerCredentials customerCredentials;
 
     public Long getCustomerId() {
@@ -68,7 +72,9 @@ public class CustomerDetail {
     }
 
     public void setCustomerCredentials(CustomerCredentials customerCredentials) {
-        this.customerCredentials = customerCredentials;
+        this.customerCredentials=customerCredentials;
+
+
     }
 
 }

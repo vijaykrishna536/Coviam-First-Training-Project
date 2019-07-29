@@ -17,6 +17,9 @@ public interface CustomerCredentialRepository extends CrudRepository<CustomerCre
     @Query(value = "Select * from Customer_Credentials where email = ?1", nativeQuery = true)
     CustomerCredentials findEmail(String email);
 
+    @Query(value = "Select * from Customer_Credentials where id = ?1", nativeQuery = true)
+    CustomerCredentials findEmailFromId(Long customerId);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE customer_credentials SET cart_id= :cartId WHERE id= :id",nativeQuery = true)

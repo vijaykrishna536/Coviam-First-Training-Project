@@ -18,13 +18,13 @@ public class NotificationService {
             this.javaMailSender=javaMailSender;
         }
 
-        public void sendNotifcation()throws MailException
+        public void sendNotifcation(String email,String subject,String text)throws MailException
         {
             SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
-            simpleMailMessage.setTo("sidana1997@gmail.com");
+            simpleMailMessage.setTo(email);
             simpleMailMessage.setFrom("cmpnvijay@gmail.com");
-            simpleMailMessage.setSubject("Hello");
-            simpleMailMessage.setText("Hllo");
+            simpleMailMessage.setSubject(subject);
+            simpleMailMessage.setText(text);
 
             javaMailSender.send(simpleMailMessage);
         }

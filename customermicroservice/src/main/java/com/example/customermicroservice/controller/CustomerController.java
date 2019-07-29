@@ -50,7 +50,7 @@ CustomerController {
     }
 
     @RequestMapping(value = "/getCustomerDetail", method = RequestMethod.GET)
-    public ResponseEntity<?> getCustomerDetails(@RequestParam(value = "cid") Long customerId){
+    public ResponseEntity<?> getCustomerDetails(@RequestParam(value = "id") Long customerId){
         String message="Customer Detail Does not Exist";
         CustomerDetailsDto customerDetailsDto = new CustomerDetailsDto();
         CustomerDetail customerDetail= customerService.getCustomerDetails(customerId);
@@ -58,15 +58,15 @@ CustomerController {
             BeanUtils.copyProperties(customerDetail,customerDetailsDto);
             return new ResponseEntity<CustomerDetailsDto>(customerDetailsDto,HttpStatus.OK);
         }
-        return new ResponseEntity<String>(message,HttpStatus.OK);
+        return new ResponseEntity<CustomerDetailsDto>(customerDetailsDto,HttpStatus.OK);
 
     }
-    @RequestMapping(value = "/addCustomerDetail", method = RequestMethod.POST)
+    @RequestMapping(value = "/addCustomerDetail", method = RequestMethod.PUT)
     public ResponseEntity<?> addCustomerDetails(@RequestBody CustomerDetailsDto customerDetailsDto) {
         CustomerDetail customerDetail = new CustomerDetail();
         BeanUtils.copyProperties(customerDetailsDto, customerDetail);
 
-        return new  ResponseEntity<String>(customerService.addCustomerDetails(customerDetail),HttpStatus.OK);
+        return new  ResponseEntity<Integer>(customerService.addCustomerDetails(customerDetail),HttpStatus.OK);
     }
 
 
@@ -87,11 +87,11 @@ CustomerController {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        String cartId = restTemplate.getForObject("http://172.16.20.94:8085/addCart/"
+        String cartId = restTemplate.getForObject("http://172.16.20.100:8083/addCart/"
                 +customerCredentials1.getCustomerId(), String.class);
 
         customerCredentials.setCartId(cartId);
-        customerService.updateCustomer(customerCredentials);
+        //customerService.updateCustomer(customerCredentials);
 
         Integer value1 = customerService.updateCustomer(customerCredentials);
 
@@ -113,14 +113,12 @@ CustomerController {
 
         CustomerCredentials customerCredentials = customerService.authenticateEmail(email);
         IdMessageDto idMessageDto = new IdMessageDto();
-        //SendingMail sendingMail = new SendingMail("sidana1997@gmail.com", "Test message", "This is testing");
-        //Email email1=new Email();
         if(customerCredentials!=null) {
             idMessageDto.setCustomerId(customerCredentials.getCustomerId());
             //sendingMail.run();
             //System.out.println(email1.home());
             try{
-                notificationService.sendNotifcation();
+                notificationService.sendNotifcation(customerCredentials.getEmail(),"Forgotten Pwd","Click to change your password");
             }
             catch (MailException e)
             {
@@ -133,6 +131,22 @@ CustomerController {
         idMessageDto.setMessage("Invalid Email");
 
         return new ResponseEntity<IdMessageDto>(idMessageDto,HttpStatus.OK);
+    }
+    @RequestMapping(method = RequestMethod.GET,value = "/orderConfirmationEmail")
+    public boolean confirmOrder(@RequestParam(value = "customerId") Long customerId)
+    {
+        //Long customerId=idMessageDto.getCustomerId();
+        if(customerId!=null)
+        {
+
+            CustomerCredentials customerCredentials=customerService.findEmailByCustomerId(customerId);
+            if(customerCredentials!=null)
+            {
+                notificationService.sendNotifcation(customerCredentials.getEmail(),"Order Confirm for customer : "+customerCredentials.getName(),"Your Order has been Successfully Placed. \n Thank you for choosing SmartBuy \n \n\n Regards,\n Customer Support");
+                return true;
+            }
+        }
+        return false;
     }
 
 

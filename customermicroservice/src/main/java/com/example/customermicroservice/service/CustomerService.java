@@ -17,7 +17,9 @@ public interface CustomerService {
 
     CustomerDetail getCustomerDetails(Long customerId);
 
-    String addCustomerDetails(CustomerDetail customerDetail);
+    Integer addCustomerDetails(CustomerDetail customerDetail);
 
     CustomerCredentials authenticateEmail(String email);
+
+    CustomerCredentials findEmailByCustomerId(Long customerId);
 }
