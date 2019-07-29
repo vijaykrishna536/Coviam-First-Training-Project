@@ -31,7 +31,8 @@ public class RankingServiceImpl implements RankingService {
 
         List<Rank> rankList = new ArrayList<>();
         // fetching all the merchants for product pid
-        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+//        List<Inventory> inventoryList = inventoryRepository.findByProductId(pid);
+        List<Inventory> inventoryList = inventoryRepository.findByProductIdAndStockGreaterThan(pid, 0);
 
         for (Inventory inventory : inventoryList) {
 
