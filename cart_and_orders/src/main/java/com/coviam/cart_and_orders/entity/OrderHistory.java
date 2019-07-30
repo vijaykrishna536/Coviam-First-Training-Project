@@ -19,7 +19,6 @@ public class OrderHistory {
     private String currentStatus;
 
 
-
     private Integer quantity;
     private Double totalPrice;
     private String merchantId;

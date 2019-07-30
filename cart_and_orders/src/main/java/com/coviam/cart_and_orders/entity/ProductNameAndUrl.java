@@ -3,7 +3,7 @@ package com.coviam.cart_and_orders.entity;
 public class ProductNameAndUrl {
 
     private String name;
-    private  String picUrl;
+    private String picUrl;
 
     public String getName() {
         return name;

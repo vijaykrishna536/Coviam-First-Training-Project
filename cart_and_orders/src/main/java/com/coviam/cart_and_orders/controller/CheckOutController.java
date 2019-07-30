@@ -21,7 +21,6 @@ public class CheckOutController {
     private CheckOutService checkOutService;
 
 
-
     @Transactional
     @PutMapping("/checkOutCart/{customerId}")
     public ResponseEntity<?> checkOutCart(@PathVariable(name = "customerId") Long customerId) {

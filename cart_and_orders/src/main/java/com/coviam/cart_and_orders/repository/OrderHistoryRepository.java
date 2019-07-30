@@ -11,5 +11,6 @@ public interface OrderHistoryRepository extends CrudRepository<OrderHistory, Lon
 
 
     List<OrderHistory> findByCustomerId(Long customerId);
+
     List<OrderHistory> findAll();
 }

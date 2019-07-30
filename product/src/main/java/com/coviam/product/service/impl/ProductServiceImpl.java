@@ -22,7 +22,11 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(String pId) {
         //TODO: add exception to handle null products
         if (pId == null) return null;
-        return productRepository.findByPId(pId);
+
+        Product product =  productRepository.findByPId(pId);
+
+
+        return  product;
     }
 
     @Override
