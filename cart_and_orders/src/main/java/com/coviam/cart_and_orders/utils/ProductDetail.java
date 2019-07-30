@@ -13,14 +13,11 @@ public class ProductDetail {
         System.out.println("172.16.20.95:8083/getProductNameAndPicUrl" + "/" + productId);
 
         ProductNameAndUrl productNameAndUrl = restTemplate.getForObject(
-                "http://172.16.20.95:8083/getProductNameAndPicUrl"+
-                "/" + productId,
+                "http://172.16.20.95:8083/getProductNameAndPicUrl" +
+                        "/" + productId,
                 ProductNameAndUrl.class);
 
         return productNameAndUrl;
-
-
-
 
 
     }

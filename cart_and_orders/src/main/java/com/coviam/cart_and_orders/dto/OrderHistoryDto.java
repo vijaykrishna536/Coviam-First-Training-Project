@@ -12,10 +12,6 @@ public class OrderHistoryDto {
     private String productName;
     private String productUrl;
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     public String getProductName() {
         return productName;
     }
@@ -42,6 +38,10 @@ public class OrderHistoryDto {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public void setQuantity(int quantity) {

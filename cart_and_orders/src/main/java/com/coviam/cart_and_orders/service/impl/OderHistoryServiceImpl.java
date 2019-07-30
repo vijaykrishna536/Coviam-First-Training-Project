@@ -1,21 +1,16 @@
 package com.coviam.cart_and_orders.service.impl;
 
-import com.coviam.cart_and_orders.dto.OrderHistoryDisplayDto;
 import com.coviam.cart_and_orders.entity.CartItem;
 import com.coviam.cart_and_orders.entity.OrderHistory;
-import com.coviam.cart_and_orders.entity.ProductNameAndUrl;
 import com.coviam.cart_and_orders.repository.CartItemRepository;
 import com.coviam.cart_and_orders.repository.OrderHistoryRepository;
 import com.coviam.cart_and_orders.service.OrderHistoryService;
-import com.coviam.cart_and_orders.utils.ProductDetail;
 import com.coviam.cart_and_orders.utils.UniqueStringGenerator;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,7 +28,7 @@ public class OderHistoryServiceImpl implements OrderHistoryService {
     @Override
     public Integer addToHistory(Long customerId) {
         final int count = 5;
-        String orderId =UniqueStringGenerator.randomAlphaNumeric(count);
+        String orderId = UniqueStringGenerator.randomAlphaNumeric(count);
         List<CartItem> cartItemList = cartItemRepository.findByCustomerId(customerId);
 
         for (CartItem cartitem : cartItemList) {
@@ -90,8 +85,6 @@ public class OderHistoryServiceImpl implements OrderHistoryService {
 //            orderHistoryDisplayDtoList.add(orderHistoryDisplayDto);
 //
 //        }
-
-
 
 
         return orderHistoryList;
